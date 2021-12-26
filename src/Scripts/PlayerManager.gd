@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var health = 10
+
 export var speed = 200
 export var friction = 0.01
 export var acceleration = 0.1
@@ -25,3 +27,7 @@ func _physics_process(delta):
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, friction)
 	velocity = move_and_slide(velocity)
+
+
+func _on_Pikes_body_entered(body):
+	health -= 1

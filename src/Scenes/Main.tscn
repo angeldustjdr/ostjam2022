@@ -71,3 +71,15 @@ shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Obstacle2"]
 occluder = SubResource( 2 )
+
+[node name="Pikes" type="Area2D" parent="."]
+position = Vector2( 100, 100 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Pikes"]
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( 20, 0, -20, 0, 0, -20 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pikes"]
+polygon = PoolVector2Array( 20, 0, -20, 0, 0, -20 )
+
+[connection signal="body_entered" from="Pikes" to="Player" method="_on_Pikes_body_entered"]

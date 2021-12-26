@@ -1,0 +1,13 @@
+extends Area2D
+
+var health = 5
+
+
+func _process(delta):
+	if health<=0:
+		queue_free()
+
+
+func _on_Pikes_area_entered(area):
+	if area._type=="Bullet":
+		health -= 1

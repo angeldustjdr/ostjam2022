@@ -26,7 +26,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="PlayerLabel" type="Label" parent="."]
 margin_left = -21.0
 margin_top = -46.0
 margin_right = 19.0
@@ -36,3 +36,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Cadence" type="Timer" parent="."]
+
+[connection signal="timeout" from="Cadence" to="." method="_on_Cadence_timeout"]

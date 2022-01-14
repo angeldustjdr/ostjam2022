@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/43-loop-unfinished.ogg-22d6cc49c6a7f4fe20c9ba5d205ec801.oggstr"
+
+[deps]
+
+source_file="res://Assets/Musics/Edited/43-loop-unfinished.ogg"
+dest_files=[ "res://.import/43-loop-unfinished.ogg-22d6cc49c6a7f4fe20c9ba5d205ec801.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

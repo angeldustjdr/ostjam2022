@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/31-noises.ogg-fac8d526107e69a0ebf6a90e2def562d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/31-noises.ogg"
+dest_files=[ "res://.import/31-noises.ogg-fac8d526107e69a0ebf6a90e2def562d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

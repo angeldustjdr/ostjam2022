@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var health = 10
+export var health = 10
 
 export var speed = 200
 export var friction = 0.01
@@ -41,10 +41,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_mouseleft"):
 		shoot()
-
-
-func _on_Pikes_body_entered(body):
-	health -= 1
 
 func _on_Cadence_timeout():
 	$Cadence.stop()

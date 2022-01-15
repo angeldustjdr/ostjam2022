@@ -25,6 +25,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="tmp" type="Label" parent="."]
+margin_left = 48.0
+margin_top = -92.0
+margin_right = 149.0
+margin_bottom = -61.0
+text = "Arrows to move
+Space to dash"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 friction = 0.1
 acceleration = 0.05

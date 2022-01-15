@@ -42,5 +42,18 @@ __meta__ = {
 [node name="RecoveryTimer" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="DashRecoveryTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="GhostTrail" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="Cadence" to="." method="_on_Cadence_timeout"]
 [connection signal="timeout" from="RecoveryTimer" to="." method="_on_RecoveryTimer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
+[connection signal="timeout" from="DashRecoveryTimer" to="." method="_on_DashRecoveryTimer_timeout"]
+[connection signal="timeout" from="GhostTrail" to="." method="_on_GhostTrail_timeout"]

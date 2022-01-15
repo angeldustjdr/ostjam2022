@@ -39,4 +39,8 @@ __meta__ = {
 
 [node name="Cadence" type="Timer" parent="."]
 
+[node name="RecoveryTimer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="timeout" from="Cadence" to="." method="_on_Cadence_timeout"]
+[connection signal="timeout" from="RecoveryTimer" to="." method="_on_RecoveryTimer_timeout"]

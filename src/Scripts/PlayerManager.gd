@@ -6,9 +6,10 @@ export var speed = 200
 export var friction = 0.01
 export var acceleration = 0.1
 export var cadence = 0.2
-export var dashVelocity = 500
+export var dashVelocity = 200
 
 onready var velocity = Vector2()
+onready var keyboard = get_parent().keyboard
 
 onready var Bullet = preload("res://Scenes/Bullet.tscn")
 onready var FadingSprite = preload("res://Scenes/FadingSprite.tscn")
@@ -19,13 +20,13 @@ onready var canDash = true
 
 func get_input():
 	var input = Vector2()
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right_"+keyboard):
 		input.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left_"+keyboard):
 		input.x -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("down_"+keyboard):
 		input.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("up_"+keyboard):
 		input.y -= 1
 	return input
 	

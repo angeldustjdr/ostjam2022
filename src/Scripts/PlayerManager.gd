@@ -35,6 +35,7 @@ func shoot():
 		$Cadence.wait_time = cadence
 		$Cadence.start()
 		var b = Bullet.instance()
+		b.direction = get_local_mouse_position()
 		get_parent().add_child(b)
 		b.transform = self.global_transform
 	
@@ -42,7 +43,6 @@ func shoot():
 func _physics_process(delta):
 	# Deplacement
 	if inputON:
-		look_at(get_global_mouse_position())
 		var direction = get_input()
 		if direction.length() > 0:
 			velocity = lerp(velocity, direction.normalized() * speed, acceleration)
@@ -63,7 +63,6 @@ func dash(dashVelocity):
 	isDashing = true
 	canDash = false
 	speed += dashVelocity
-	$PlayerCollisionShape.disabled = true
 	$DashTimer.start()
 	$DashRecoveryTimer.start()
 	
@@ -84,7 +83,6 @@ func _on_RecoveryTimer_timeout():
 func _on_DashTimer_timeout():
 	isDashing = false
 	speed -= dashVelocity
-	$PlayerCollisionShape.disabled = false
 	$DashTimer.stop()
 
 func _on_DashRecoveryTimer_timeout():

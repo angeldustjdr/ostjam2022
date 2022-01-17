@@ -12,5 +12,5 @@ func _on_Pikes_area_entered(area):
 
 func _on_Pikes_body_entered(body):
 	var player = get_parent().get_node("Player")
-	if body==player:
+	if body==player and !player.isDashing:
 		player.takeDamage(1)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Graphics/Sprites/MC/MC-test_0010_Face-static-1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Graphics/Sprites/MC/MC-test-all-sprites.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/PlayerManager.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/PlayerLabel.gd" type="Script" id=3]
 
@@ -8,15 +8,70 @@
 radius = 6.0
 height = 6.0
 
+[sub_resource type="Animation" id=2]
+resource_name = "Droite-static"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Droite-walk"
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.72 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 2, 5, 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="Icon" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+hframes = 9
+vframes = 5
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 0 )
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Droite-static = SubResource( 2 )
+anims/Droite-walk = SubResource( 3 )
+anims/RESET = SubResource( 4 )
 
 [node name="PlayerLabel" type="Label" parent="."]
 margin_left = -19.0

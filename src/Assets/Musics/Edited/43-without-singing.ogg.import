@@ -11,5 +11,5 @@ dest_files=[ "res://.import/43-without-singing.ogg-9305f956c6618c465dcd8c5161c3d
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

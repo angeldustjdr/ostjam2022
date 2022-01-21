@@ -11,5 +11,5 @@ dest_files=[ "res://.import/31-lullaby.ogg-b1cdaf1001f188ef9bf139c1d5b011c8.oggs
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/43-loop-unfinished.ogg-22d6cc49c6a7f4fe20c9ba5d205ec
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

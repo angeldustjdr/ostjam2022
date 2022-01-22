@@ -69,7 +69,6 @@ tracks/0/keys = {
 }
 
 [node name="Pikes" instance=ExtResource( 1 )]
-position = Vector2( 0, 0 )
 
 [node name="Polygon2D" parent="." index="1"]
 visible = false

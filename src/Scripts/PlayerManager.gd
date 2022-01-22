@@ -38,6 +38,7 @@ func shoot():
 		b.direction = get_local_mouse_position()
 		get_parent().add_child(b)
 		b.transform = self.global_transform
+		b.rotation = self.position.angle_to_point(b.direction)
 	
 
 func _physics_process(delta):

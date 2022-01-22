@@ -3,7 +3,7 @@ extends Node2D
 onready var Parent = get_parent()
 onready var HealthBlock = preload("res://Scenes/HealthBlock.tscn")
 onready var HealhBlockWidth = 4
-onready var intervale = 2
+onready var intervale = 1
 
 func _ready():
 	updateHealthUI()

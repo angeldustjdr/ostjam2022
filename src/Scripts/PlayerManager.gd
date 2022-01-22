@@ -31,7 +31,7 @@ func get_input():
 	return input
 	
 func shoot():
-	if $Cadence.is_stopped():
+	if $Cadence.is_stopped() and inputON:
 		$Cadence.wait_time = cadence
 		$Cadence.start()
 		var b = Bullet.instance()
@@ -79,14 +79,19 @@ func takeDamage(n):
 	health -= 1
 	$PlayerHealth.updateHealthUI()
 	$Glitch.visible = true
+	if health <= 0:
+		$AnimationTree.get("parameters/playback").travel("DEATH")
 
 func _on_Cadence_timeout():
 	$Cadence.stop()
 
 func _on_RecoveryTimer_timeout():
-	inputON=true
 	$RecoveryTimer.stop()
-	$Glitch.visible = false
+	if health > 0 :
+		inputON=true
+		$Glitch.visible = false
+	else : 
+		velocity = Vector2.ZERO
 
 func _on_DashTimer_timeout():
 	isDashing = false

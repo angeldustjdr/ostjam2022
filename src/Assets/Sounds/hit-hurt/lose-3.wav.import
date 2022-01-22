@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lose-3.wav-a280f7649f9ac2fcc3c589f28536c68d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/hit-hurt/lose-3.wav"
+dest_files=[ "res://.import/lose-3.wav-a280f7649f9ac2fcc3c589f28536c68d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hitHurt-v8.wav-213ddb475254232bdee159418f8e25e9.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/hit-hurt/hitHurt-v8.wav"
+dest_files=[ "res://.import/hitHurt-v8.wav-213ddb475254232bdee159418f8e25e9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

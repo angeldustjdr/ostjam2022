@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/radar3.ogg-157cab7cfc7e5be295026b607a0d482d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/environnement-machines-robots/radar3.ogg"
+dest_files=[ "res://.import/radar3.ogg-157cab7cfc7e5be295026b607a0d482d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

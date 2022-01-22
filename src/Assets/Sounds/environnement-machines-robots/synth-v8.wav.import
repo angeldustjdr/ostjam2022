@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/synth-v8.wav-7ab50b3c7146566386cb6b892ce7e60d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/environnement-machines-robots/synth-v8.wav"
+dest_files=[ "res://.import/synth-v8.wav-7ab50b3c7146566386cb6b892ce7e60d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

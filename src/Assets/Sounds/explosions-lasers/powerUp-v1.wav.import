@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/powerUp-v1.wav-eebd9746f7976b05e729d1cfbd8da171.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/explosions-lasers/powerUp-v1.wav"
+dest_files=[ "res://.import/powerUp-v1.wav-eebd9746f7976b05e729d1cfbd8da171.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

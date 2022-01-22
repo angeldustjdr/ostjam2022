@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/laserShoot-v4.wav-14bc43e660661bf0f6bca8705befb883.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/explosions-lasers/laserShoot-v4.wav"
+dest_files=[ "res://.import/laserShoot-v4.wav-14bc43e660661bf0f6bca8705befb883.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

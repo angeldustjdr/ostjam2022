@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rumble2.ogg-a4e54ef2d3be3b8fb6f6d80766dac625.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/explosions-lasers/rumble2.ogg"
+dest_files=[ "res://.import/rumble2.ogg-a4e54ef2d3be3b8fb6f6d80766dac625.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

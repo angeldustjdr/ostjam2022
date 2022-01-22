@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/interruptor-v1.wav-aa58db7c5b48d140c862f0da535e216b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/hit-hurt/interruptor-v1.wav"
+dest_files=[ "res://.import/interruptor-v1.wav-aa58db7c5b48d140c862f0da535e216b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

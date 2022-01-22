@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/08-honk-only.ogg-edc71caa409ec59c365b2d2bcdc0c5ae.oggstr"
+path="res://.import/08-honk-only.ogg-0665e4bc10ca3740ec48cc155d63e8e5.oggstr"
 
 [deps]
 
-source_file="res://Assets/Sounds/08-honk-only.ogg"
-dest_files=[ "res://.import/08-honk-only.ogg-edc71caa409ec59c365b2d2bcdc0c5ae.oggstr" ]
+source_file="res://Assets/Sounds/environnement-machines-robots/08-honk-only.ogg"
+dest_files=[ "res://.import/08-honk-only.ogg-0665e4bc10ca3740ec48cc155d63e8e5.oggstr" ]
 
 [params]
 

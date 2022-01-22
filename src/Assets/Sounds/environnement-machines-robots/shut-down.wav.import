@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shut-down.wav-164bc80202fa88c741e62a646554d670.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/environnement-machines-robots/shut-down.wav"
+dest_files=[ "res://.import/shut-down.wav-164bc80202fa88c741e62a646554d670.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

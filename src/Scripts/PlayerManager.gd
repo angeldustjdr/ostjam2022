@@ -97,5 +97,6 @@ func _on_DashRecoveryTimer_timeout():
 func _on_GhostTrail_timeout():
 	if isDashing:
 		var ghostTrail = FadingSprite.instance()
+		ghostTrail.PlayerSprite = $Sprite
 		ghostTrail.transform = global_transform
 		get_parent().add_child(ghostTrail)

@@ -1,6 +1,6 @@
 extends Area2D
 
-var health = 5
+var health = 3
 
 func _process(delta):
 	if health<=0:
@@ -9,6 +9,7 @@ func _process(delta):
 func _on_Pikes_area_entered(area):
 	if area._type=="Bullet":
 		health -= 1
+		$HealthUI.updateHealthUI()
 
 func _on_Pikes_body_entered(body):
 	var player = get_parent().get_node("Player")

@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="HealthBlock" type="Polygon2D"]
+polygon = PoolVector2Array( -2, -2, 2, -2, 2, 2, -2, 2 )

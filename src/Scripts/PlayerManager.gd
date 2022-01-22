@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var health = 10
+export var health = 5
 
 export var speed = 200
 export var friction = 0.01
@@ -72,6 +72,7 @@ func takeDamage(n):
 	$RecoveryTimer.start()
 	velocity = velocity.rotated(PI)
 	health -= 1
+	$PlayerHealth.updateHealthUI()
 
 func _on_Cadence_timeout():
 	$Cadence.stop()

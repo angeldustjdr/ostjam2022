@@ -96,6 +96,7 @@ shape = SubResource( 1 )
 occluder = SubResource( 2 )
 
 [node name="Pikes" parent="." instance=ExtResource( 5 )]
+position = Vector2( 100, 100 )
 
 [node name="Pikes2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -100, -100 )

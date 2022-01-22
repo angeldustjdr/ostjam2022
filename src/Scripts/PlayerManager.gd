@@ -78,6 +78,7 @@ func takeDamage(n):
 	velocity = velocity.rotated(PI)
 	health -= 1
 	$PlayerHealth.updateHealthUI()
+	$Glitch.visible = true
 
 func _on_Cadence_timeout():
 	$Cadence.stop()
@@ -85,6 +86,7 @@ func _on_Cadence_timeout():
 func _on_RecoveryTimer_timeout():
 	inputON=true
 	$RecoveryTimer.stop()
+	$Glitch.visible = false
 
 func _on_DashTimer_timeout():
 	isDashing = false

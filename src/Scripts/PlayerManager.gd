@@ -46,8 +46,12 @@ func _physics_process(delta):
 		var direction = get_input()
 		if direction.length() > 0:
 			velocity = lerp(velocity, direction.normalized() * speed, acceleration)
+			$AnimationTree.get("parameters/playback").travel("Walk")
 		else:
 			velocity = lerp(velocity, Vector2.ZERO, friction)
+			$AnimationTree.get("parameters/playback").travel("Idle")
+		$AnimationTree.set("parameters/Idle/blend_position",get_local_mouse_position().normalized())
+		$AnimationTree.set("parameters/Walk/blend_position",get_local_mouse_position().normalized())
 	velocity = move_and_slide(velocity)
 	
 	#Shoot

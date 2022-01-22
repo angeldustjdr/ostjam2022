@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Assets/Graphics/Sprites/MC/MC-test-all-sprites.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/PlayerManager.gd" type="Script" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Scripts/HealthUIManager.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 6.0
+radius = 7.0
 height = 6.0
 
 [sub_resource type="Animation" id=5]
@@ -301,6 +301,66 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Gauche-static"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Droite-static"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Face-static"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Dos-static"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=24]
+blend_point_0/node = SubResource( 20 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 21 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 22 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 23 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "Gauche-walk"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Droite-walk"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Face-walk"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "Dos-walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=31]
+blend_point_0/node = SubResource( 27 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 28 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 29 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 30 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachine" id=25]
+states/Idle/node = SubResource( 24 )
+states/Idle/position = Vector2( 260, 102 )
+states/Walk/node = SubResource( 31 )
+states/Walk/position = Vector2( 449, 111 )
+transitions = [ "Idle", "Walk", SubResource( 32 ), "Walk", "Idle", SubResource( 33 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -314,28 +374,8 @@ hframes = 9
 vframes = 5
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 0 )
+position = Vector2( 1, 0 )
 shape = SubResource( 1 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/DEATH = SubResource( 5 )
-anims/Dos-hit = SubResource( 6 )
-anims/Dos-static = SubResource( 7 )
-anims/Dos-tir = SubResource( 8 )
-anims/Dos-walk = SubResource( 9 )
-anims/Droite-hit = SubResource( 10 )
-anims/Droite-static = SubResource( 2 )
-anims/Droite-tir = SubResource( 11 )
-anims/Droite-walk = SubResource( 3 )
-anims/Face-hit = SubResource( 12 )
-anims/Face-static = SubResource( 13 )
-anims/Face-tir = SubResource( 14 )
-anims/Face-walk = SubResource( 15 )
-anims/Gauche-hit = SubResource( 16 )
-anims/Gauche-static = SubResource( 17 )
-anims/Gauche-tir = SubResource( 18 )
-anims/Gauche-walk = SubResource( 19 )
-anims/RESET = SubResource( 4 )
 
 [node name="Cadence" type="Timer" parent="."]
 
@@ -357,6 +397,34 @@ script = ExtResource( 3 )
 [node name="GhostTrail" type="Timer" parent="."]
 wait_time = 0.05
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DEATH = SubResource( 5 )
+anims/Dos-hit = SubResource( 6 )
+anims/Dos-static = SubResource( 7 )
+anims/Dos-tir = SubResource( 8 )
+anims/Dos-walk = SubResource( 9 )
+anims/Droite-hit = SubResource( 10 )
+anims/Droite-static = SubResource( 2 )
+anims/Droite-tir = SubResource( 11 )
+anims/Droite-walk = SubResource( 3 )
+anims/Face-hit = SubResource( 12 )
+anims/Face-static = SubResource( 13 )
+anims/Face-tir = SubResource( 14 )
+anims/Face-walk = SubResource( 15 )
+anims/Gauche-hit = SubResource( 16 )
+anims/Gauche-static = SubResource( 17 )
+anims/Gauche-tir = SubResource( 18 )
+anims/Gauche-walk = SubResource( 19 )
+anims/RESET = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 25 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 26 )
+parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/Walk/blend_position = Vector2( 0, 0 )
 
 [connection signal="timeout" from="Cadence" to="." method="_on_Cadence_timeout"]
 [connection signal="timeout" from="RecoveryTimer" to="." method="_on_RecoveryTimer_timeout"]

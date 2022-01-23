@@ -73,11 +73,18 @@ func dash(dashVelocity):
 	$DashTimer.start()
 	$DashRecoveryTimer.start()
 	
-func takeDamage(n):
+func takeDamage(n,monster_position):
 	#knockback
 	inputON = false
 	$RecoveryTimer.start()
-	velocity = velocity.rotated(PI)
+	var delta_x = self.position.x - monster_position.x
+	var delta_y = self.position.y - monster_position.y
+	var norm = sqrt(delta_x*delta_x+delta_y*delta_y)
+	if (norm > 0):
+		velocity = Vector2(200*delta_x/norm,200*delta_y/norm)
+	else:
+		if (velocity.length() > 0):
+			velocity = velocity.rotated(PI) #marche pas pour des ennemis qui viennent vers toi quand t'es immobile
 	health -= 1
 	$PlayerHealth.updateHealthUI()
 	$Glitch.visible = true

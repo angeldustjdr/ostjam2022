@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/DeathReboot.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Scenes/Robot2.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -116,3 +117,6 @@ position = Vector2( -100, -100 )
 
 [node name="Pikes3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 104, -184 )
+
+[node name="Robot2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 80, 0 )

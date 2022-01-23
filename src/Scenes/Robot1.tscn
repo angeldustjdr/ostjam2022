@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/HealthUIManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Sprites/Robots/Enemy-type-1/Robot1-all-sprites.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Robot1.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Robot1_sounds.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -33,6 +34,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 14, 15, 16, 17, 18, 19, 20, 21 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "death"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -69,7 +84,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 7 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "death"
 
 [sub_resource type="AnimationNodeAnimation" id=6]
@@ -78,22 +93,22 @@ animation = "idle"
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=8]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=10]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
 [sub_resource type="AnimationNodeStateMachine" id=12]
-states/death/node = SubResource( 5 )
-states/death/position = Vector2( 335, 198 )
+states/death/node = SubResource( 14 )
+states/death/position = Vector2( 319, 177 )
 states/idle/node = SubResource( 6 )
 states/idle/position = Vector2( 179, 89 )
 states/walk/node = SubResource( 7 )
 states/walk/position = Vector2( 370, 49 )
-transitions = [ "walk", "death", SubResource( 8 ), "idle", "death", SubResource( 9 ), "walk", "idle", SubResource( 10 ), "idle", "walk", SubResource( 11 ) ]
+transitions = [ "walk", "idle", SubResource( 10 ), "idle", "walk", SubResource( 11 ), "idle", "death", SubResource( 15 ), "walk", "death", SubResource( 16 ) ]
 start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=13]
@@ -138,3 +153,10 @@ parameters/playback = SubResource( 13 )
 
 [node name="MovingTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 1.2
+
+[node name="Robot1_sounds" parent="." instance=ExtResource( 4 )]
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

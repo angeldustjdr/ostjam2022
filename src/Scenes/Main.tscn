@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/CameraManager.gd" type="Script" id=3]
 [ext_resource path="res://Assets/spot.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Level1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Robot3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/MusicManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/DeathReboot.tscn" type="PackedScene" id=9]
@@ -59,6 +60,9 @@ position = Vector2( 38, 75 )
 
 [node name="Robot2" parent="." instance=ExtResource( 11 )]
 position = Vector2( -3, -235 )
+
+[node name="Robot3" parent="." instance=ExtResource( 6 )]
+position = Vector2( -352, -8 )
 
 [node name="Collectible" parent="." instance=ExtResource( 12 )]
 position = Vector2( -115, -177 )

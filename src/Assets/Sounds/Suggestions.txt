@@ -1,0 +1,5 @@
+MES SUGGESTIONS (JODIE):
+dash ---> dash
+tir MC ou Robot ---> laser-7 / laserShoot-v3 / laserShoot-v3 /gun-5 
+hit/hurt MC ou Robot --> hutHurt-v4 / hitHurt-v2 / hitHurt-v8 / lose-4 / synth-v3
+DEATH --> lose-4 / lose-10 / shut-down

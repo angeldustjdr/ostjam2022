@@ -74,7 +74,6 @@ func dash(dashVelocity):
 	$DashRecoveryTimer.start()
 	
 func takeDamage(n):
-	self.get_node("Player_sounds")._play_song_from_name_with_playback("hurt")
 	#knockback
 	inputON = false
 	$RecoveryTimer.start()
@@ -83,7 +82,10 @@ func takeDamage(n):
 	$PlayerHealth.updateHealthUI()
 	$Glitch.visible = true
 	if health <= 0:
+		self.get_node("Player_sounds")._play_song_from_name_with_playback("death")
 		$AnimationTree.get("parameters/playback").travel("DEATH")
+	else:
+		self.get_node("Player_sounds")._play_song_from_name_with_playback("hurt")
 
 func _on_Cadence_timeout():
 	$Cadence.stop()

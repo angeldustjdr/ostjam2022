@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sounds/explosions-lasers/gun-5.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/SoundManager.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sounds/explosions-lasers/powerUp-v2.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/hit-hurt/hitHurt-v2.wav" type="AudioStream" id=4]
+
+[node name="Player_sounds" type="Node"]
+script = ExtResource( 2 )
+
+[node name="shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = 5.0
+pitch_scale = 0.9
+
+[node name="dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+pitch_scale = 0.8
+
+[node name="hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

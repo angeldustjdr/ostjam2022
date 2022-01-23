@@ -35,6 +35,7 @@ func shoot():
 		$Cadence.wait_time = cadence
 		$Cadence.start()
 		var b = Bullet.instance()
+		self.get_node("Player_sounds")._play_song_from_name_with_playback("shoot")
 		b.direction = get_local_mouse_position()
 		get_parent().add_child(b)
 		b.transform = self.global_transform
@@ -65,6 +66,7 @@ func _physics_process(delta):
 			dash(dashVelocity)
 
 func dash(dashVelocity):
+	self.get_node("Player_sounds")._play_song_from_name_with_playback("dash")
 	isDashing = true
 	canDash = false
 	speed += dashVelocity
@@ -72,6 +74,7 @@ func dash(dashVelocity):
 	$DashRecoveryTimer.start()
 	
 func takeDamage(n):
+	self.get_node("Player_sounds")._play_song_from_name_with_playback("hurt")
 	#knockback
 	inputON = false
 	$RecoveryTimer.start()

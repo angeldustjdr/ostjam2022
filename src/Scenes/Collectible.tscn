@@ -1,32 +1,31 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Collectible.gd" type="Script" id=1]
 [ext_resource path="res://Assets/floaty_64.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Particles2DCollectible.gd" type="Script" id=3]
+[ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="DynamicFont" id=4]
+size = 25
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="CanvasItemMaterial" id=5]
 blend_mode = 2
 particles_animation = true
 particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = false
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
-emission_sphere_radius = 16.0
+emission_sphere_radius = 20.0
 flag_disable_z = true
-spread = 180.0
 gravity = Vector3( 0, -98, 0 )
-initial_velocity = 50.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-angle = 100.0
-angle_random = 1.0
-scale = 1.5
-scale_random = 0.3
-anim_speed = 1.0
 
 [node name="Collectible" type="Area2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -37,15 +36,6 @@ thisCollectibleType = "Health"
 scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
-material = SubResource( 2 )
-scale = Vector2( 0.5, 0.5 )
-amount = 15
-lifetime = 2.0
-process_material = SubResource( 3 )
-texture = ExtResource( 2 )
-script = ExtResource( 3 )
-
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -10.0
 margin_top = -10.0
@@ -55,5 +45,22 @@ color = Color( 1, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_left = -52.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 4 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Particles2D" type="Particles2D" parent="."]
+material = SubResource( 5 )
+amount = 20
+process_material = SubResource( 6 )
+texture = ExtResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_Collectible_body_entered"]

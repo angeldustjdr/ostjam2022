@@ -61,9 +61,24 @@ position = Vector2( 38, 75 )
 position = Vector2( -3, -235 )
 
 [node name="Collectible" parent="." instance=ExtResource( 12 )]
-position = Vector2( -76, 59 )
-thisCollectibleType = "BulletSize"
+position = Vector2( -115, -177 )
 
 [node name="Collectible2" parent="." instance=ExtResource( 12 )]
-position = Vector2( -75, -4 )
+position = Vector2( -69, -177 )
+thisCollectibleType = "DashSpeed"
+
+[node name="Collectible3" parent="." instance=ExtResource( 12 )]
+position = Vector2( -23, -176 )
 thisCollectibleType = "BulletSize"
+
+[node name="Collectible4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 16, -176 )
+thisCollectibleType = "BulletSpeed"
+
+[node name="Collectible5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 51, -179 )
+thisCollectibleType = "MoveSpeed"
+
+[node name="Collectible6" parent="." instance=ExtResource( 12 )]
+position = Vector2( 83, -177 )
+thisCollectibleType = "CadenceUp"

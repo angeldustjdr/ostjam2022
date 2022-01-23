@@ -13,6 +13,13 @@ var nbDashPowerUp = 0
 onready var dashTimer0 = $DashTimer.wait_time
 export var bulletSize_PowerUp = 0.2
 var nbBulletPowerUp = 0
+export var bulletSpeed_PowerUp = 50
+export var bulletSpeed0 = 150
+var nbBulletSpeedPowerUp = 0
+export var speedPowerUp = 50
+var nbSpeedPowerUp = 0
+export var cadencePowerUp = 0.05
+var nbCadencePowerUp = 0
 
 onready var velocity = Vector2()
 onready var keyboard = get_parent().keyboard
@@ -39,7 +46,10 @@ func get_input():
 	
 func shoot():
 	if $Cadence.is_stopped() and inputON:
-		$Cadence.wait_time = cadence
+		var myCadence = cadence - nbCadencePowerUp*cadencePowerUp
+		if myCadence < 0.1:
+			myCadence = 0.1
+		$Cadence.wait_time = myCadence
 		$Cadence.start()
 		var b = Bullet.instance()
 		self.get_node("Player_sounds")._play_song_from_name_with_playback("shoot")
@@ -48,14 +58,16 @@ func shoot():
 		b.transform = self.global_transform
 		b.rotation = self.position.angle_to_point(b.get_global_mouse_position())
 		b.scale = Vector2(1+nbBulletPowerUp*bulletSize_PowerUp,1+nbBulletPowerUp*bulletSize_PowerUp)
+		b.speed = bulletSpeed0 + nbBulletSpeedPowerUp*bulletSpeed_PowerUp
 	
 
 func _physics_process(delta):
 	# Deplacement
 	if inputON:
 		var direction = get_input()
+		var mySpeed = speed + nbSpeedPowerUp*speedPowerUp
 		if direction.length() > 0:
-			velocity = lerp(velocity, direction.normalized() * speed, acceleration)
+			velocity = lerp(velocity, direction.normalized() * mySpeed, acceleration)
 			$AnimationTree.get("parameters/playback").travel("Walk")
 		else:
 			velocity = lerp(velocity, Vector2.ZERO, friction)
@@ -115,11 +127,14 @@ func applyCollectible(thisCollectibleType,color):
 			powerUpStart(color)
 			nbBulletPowerUp +=1
 		"BulletSpeed":
-			print(thisCollectibleType)
+			powerUpStart(color)
+			nbBulletSpeedPowerUp +=1
 		"MoveSpeed":
-			print(thisCollectibleType)
+			powerUpStart(color)
+			nbSpeedPowerUp +=1
 		"CadenceUp":
-			print(thisCollectibleType)
+			powerUpStart(color)
+			nbCadencePowerUp +=1
 
 func powerUpStart(color):
 	$PowerUpUI.visible = true
@@ -134,6 +149,9 @@ func powerUpStart(color):
 func _on_PowerUpTimer_timeout():
 	nbDashPowerUp = 0
 	nbBulletPowerUp = 0
+	nbBulletSpeedPowerUp = 0
+	nbSpeedPowerUp = 0
+	nbCadencePowerUp = 0
 	for n in get_tree().get_nodes_in_group("Particles"):
 		n.queue_free()
 	

@@ -6,7 +6,6 @@ func _ready():
 func _process(delta):
 	if health<=0 && !is_dead:
 		is_dead = true
-		print(self.get_node("DeathTimer").get_time_left())
 		self.get_node("AnimationTree").get("parameters/playback").travel("death")
 		self.get_node("MovingTimer").stop()
 		if(self.get_node("DeathTimer").is_stopped()):

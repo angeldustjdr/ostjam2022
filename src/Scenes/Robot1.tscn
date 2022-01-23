@@ -122,9 +122,9 @@ script = ExtResource( 3 )
 position = Vector2( 2, -12 )
 script = ExtResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="RobotArea" type="Area2D" parent="."]
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="RobotArea"]
 position = Vector2( 2, 11 )
 scale = Vector2( 0.40625, 1.0957 )
 polygon = PoolVector2Array( -24.6154, -17.3861, -24.6154, -2.78361, 14.7692, -2.78361, 14.7692, -17.3861 )

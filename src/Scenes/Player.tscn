@@ -8,11 +8,11 @@
 [ext_resource path="res://Scenes/Player_sounds.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/PowerUpUI.gd" type="Script" id=7]
 
-[sub_resource type="ShaderMaterial" id=35]
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.0
 height = 6.0
+
+[sub_resource type="ShaderMaterial" id=35]
 
 [sub_resource type="Animation" id=5]
 resource_name = "DEATH"
@@ -377,6 +377,12 @@ graph_offset = Vector2( -16, 18 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="PlayerCollisionShape2" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2( 1, 0 )
+shape = SubResource( 1 )
 
 [node name="PlayerHealth" type="Node2D" parent="."]
 position = Vector2( 0, -12 )

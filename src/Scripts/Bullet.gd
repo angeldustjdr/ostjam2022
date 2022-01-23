@@ -11,4 +11,6 @@ func _on_Timer_timeout():
 	queue_free()
 
 func _on_Bullet_area_entered(area):
-	queue_free()
+	if "Robot".is_subsequence_of(area.name):
+		if !area.get_parent()._get_is_dead():
+			queue_free()

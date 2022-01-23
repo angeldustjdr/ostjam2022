@@ -7,16 +7,18 @@ var pixel_count = 0
 var dir = 0
 var is_dead = false
 
+func _get_is_dead():
+	return self.is_dead
+
 func _ready():
 	self.get_node("MovingTimer").connect("timeout", self, "_move_random")
-	self.get_node("Area2D").connect("area_entered", self,"_on_Pikes_area_entered")
-	self.get_node("Area2D").connect("body_entered", self,"_on_Pikes_body_entered")
+	self.get_node("RobotArea").connect("area_entered", self,"_on_Pikes_area_entered")
+	self.get_node("RobotArea").connect("body_entered", self,"_on_Pikes_body_entered")
 	self.get_node("DeathTimer").connect("timeout",self,"_death")
 
 func _process(delta):
 	if health<=0 && !is_dead:
 		is_dead = true
-		print(self.get_node("DeathTimer").get_time_left())
 		self.get_node("AnimationTree").get("parameters/playback").travel("death")
 		self.get_node("MovingTimer").stop()
 		if(self.get_node("DeathTimer").is_stopped()):
@@ -36,13 +38,15 @@ func _death():
 	self.queue_free()
 
 func _on_Pikes_area_entered(area):
-	if area._type=="Bullet":
-		health -= 1
-		if health == 0:
-			self.get_node("Robot1_sounds")._play_song_from_name_with_playback("death")
-		else:
-			self.get_node("Robot1_sounds")._play_song_from_name_with_playback("hurt")
-		$HealthUI.updateHealthUI()
+	if !self.is_dead:
+		if "Bullet".is_subsequence_of(area.name):
+			if area._type=="Bullet":
+				health -= 1
+				if health == 0:
+					self.get_node("Robot1_sounds")._play_song_from_name_with_playback("death")
+				else:
+					self.get_node("Robot1_sounds")._play_song_from_name_with_playback("hurt")
+				$HealthUI.updateHealthUI()
 
 func _on_Pikes_body_entered(body):
 	if !is_dead:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Collectible.gd" type="Script" id=1]
-[ext_resource path="res://Assets/floaty_64.png" type="Texture" id=2]
 [ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -12,28 +11,12 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="CanvasItemMaterial" id=5]
-blend_mode = 2
-particles_animation = true
-particles_anim_h_frames = 7
-particles_anim_v_frames = 7
-particles_anim_loop = false
-
-[sub_resource type="ParticlesMaterial" id=6]
-emission_shape = 1
-emission_sphere_radius = 20.0
-flag_disable_z = true
-gravity = Vector3( 0, -98, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-
 [node name="Collectible" type="Area2D"]
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 1 )
 thisCollectibleType = "Health"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -56,11 +39,5 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Particles2D" type="Particles2D" parent="."]
-material = SubResource( 5 )
-amount = 20
-process_material = SubResource( 6 )
-texture = ExtResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_Collectible_body_entered"]

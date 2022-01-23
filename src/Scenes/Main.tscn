@@ -35,7 +35,7 @@ smoothing_enabled = true
 script = ExtResource( 3 )
 
 [node name="Pikes3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 38, 75 )
+position = Vector2( 48, 66 )
 
 [node name="Collectible_BulletSize" parent="." instance=ExtResource( 10 )]
 position = Vector2( -86, 61 )

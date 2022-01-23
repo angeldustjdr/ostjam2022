@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/floaty_64.png" type="Texture" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 2
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 16.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, -98, 0 )
+initial_velocity = 50.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 100.0
+angle_random = 1.0
+scale = 1.5
+scale_random = 0.3
+anim_speed = 1.0
+
+[node name="Particles2D" type="Particles2D" groups=["Particles"]]
+material = SubResource( 1 )
+scale = Vector2( 0.2, 0.2 )
+amount = 7
+lifetime = 3.0
+process_material = SubResource( 2 )
+texture = ExtResource( 1 )

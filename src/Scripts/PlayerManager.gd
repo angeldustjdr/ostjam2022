@@ -8,11 +8,18 @@ export var acceleration = 0.1
 export var cadence = 0.2
 export var dashVelocity = 200
 
+export var dashlength_PowerUp = 0.3
+var nbDashPowerUp = 0
+onready var dashTimer0 = $DashTimer.wait_time
+export var bulletSize_PowerUp = 0.2
+var nbBulletPowerUp = 0
+
 onready var velocity = Vector2()
 onready var keyboard = get_parent().keyboard
 
 onready var Bullet = preload("res://Scenes/Bullet.tscn")
 onready var FadingSprite = preload("res://Scenes/FadingSprite.tscn")
+onready var particles = preload("res://Scenes/Particles2D.tscn")
 
 onready var inputON = true
 onready var isDashing = false
@@ -39,7 +46,8 @@ func shoot():
 		b.direction = get_local_mouse_position()
 		get_parent().add_child(b)
 		b.transform = self.global_transform
-		b.rotation = self.position.angle_to_point(b.direction)
+		b.rotation = self.position.angle_to_point(b.get_global_mouse_position())
+		b.scale = Vector2(1+nbBulletPowerUp*bulletSize_PowerUp,1+nbBulletPowerUp*bulletSize_PowerUp)
 	
 
 func _physics_process(delta):
@@ -70,6 +78,7 @@ func dash(dashVelocity):
 	isDashing = true
 	canDash = false
 	speed += dashVelocity
+	$DashTimer.wait_time = dashTimer0 + nbDashPowerUp*dashlength_PowerUp
 	$DashTimer.start()
 	$DashRecoveryTimer.start()
 	
@@ -94,6 +103,40 @@ func takeDamage(n,monster_position):
 	else:
 		self.get_node("Player_sounds")._play_song_from_name_with_playback("hurt")
 
+func applyCollectible(thisCollectibleType,color):
+	match thisCollectibleType:
+		"Health":
+			health +=1
+			$PlayerHealth.updateHealthUI()
+		"DashSpeed":
+			powerUpStart(color)
+			nbDashPowerUp += 1
+		"BulletSize":
+			powerUpStart(color)
+			nbBulletPowerUp +=1
+		"BulletSpeed":
+			print(thisCollectibleType)
+		"MoveSpeed":
+			print(thisCollectibleType)
+		"CadenceUp":
+			print(thisCollectibleType)
+
+func powerUpStart(color):
+	$PowerUpUI.visible = true
+	$PowerUpTimer.stop()
+	$PowerUpTimer.start()
+	for n in get_tree().get_nodes_in_group("Particles"):
+		n.queue_free()
+	var p = particles.instance()
+	p.process_material.color = color
+	add_child(p)
+
+func _on_PowerUpTimer_timeout():
+	nbDashPowerUp = 0
+	nbBulletPowerUp = 0
+	for n in get_tree().get_nodes_in_group("Particles"):
+		n.queue_free()
+	
 func _on_Cadence_timeout():
 	$Cadence.stop()
 

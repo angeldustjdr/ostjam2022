@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Collectible.gd" type="Script" id=1]
+[ext_resource path="res://Assets/floaty_64.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Particles2DCollectible.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 2
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 16.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, -98, 0 )
+initial_velocity = 50.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 100.0
+angle_random = 1.0
+scale = 1.5
+scale_random = 0.3
+anim_speed = 1.0
+
+[node name="Collectible" type="Area2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+thisCollectibleType = "Health"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 0.5, 0.5 )
+amount = 15
+lifetime = 2.0
+process_material = SubResource( 3 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="." to="." method="_on_Collectible_body_entered"]

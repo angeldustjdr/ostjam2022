@@ -28,7 +28,7 @@ onready var Bullet = preload("res://Scenes/Bullet.tscn")
 onready var FadingSprite = preload("res://Scenes/FadingSprite.tscn")
 onready var particles = preload("res://Scenes/Particles2D.tscn")
 
-onready var inputON = true
+onready var inputON = false
 onready var isDashing = false
 onready var canDash = true
 
@@ -74,16 +74,17 @@ func _physics_process(delta):
 			$AnimationTree.get("parameters/playback").travel("Idle")
 		$AnimationTree.set("parameters/Idle/blend_position",get_local_mouse_position().normalized())
 		$AnimationTree.set("parameters/Walk/blend_position",get_local_mouse_position().normalized())
-	velocity = move_and_slide(velocity)
 	
 	#Shoot
-	if Input.is_action_pressed("ui_mouseleft"):
-		shoot()
+		if Input.is_action_pressed("ui_mouseleft"):
+			shoot()
 	
 	#Dash
-	if Input.is_action_pressed("ui_select"):
-		if !isDashing and canDash:
-			dash(dashVelocity)
+		if Input.is_action_pressed("ui_select"):
+			if !isDashing and canDash:
+				dash(dashVelocity)
+	
+	velocity = move_and_slide(velocity)
 
 func dash(dashVelocity):
 	self.get_node("Player_sounds")._play_song_from_name_with_playback("dash")
@@ -109,6 +110,9 @@ func takeDamage(n,monster_position):
 	health -= 1
 	$PlayerHealth.updateHealthUI()
 	$Glitch.visible = true
+	var catchPhrase = ["Ouch !","That hurts !","...","Shit !"]
+	catchPhrase.shuffle()
+	$PlayerDialog.speak(catchPhrase[0],1)
 	if health <= 0:
 		self.get_node("Player_sounds")._play_song_from_name_with_playback("death")
 		$AnimationTree.get("parameters/playback").travel("DEATH")
@@ -145,6 +149,9 @@ func powerUpStart(color):
 	var p = particles.instance()
 	p.process_material.color = color
 	add_child(p)
+	var catchPhrase = ["Oh yeah !","This will be usefull","Why not ?","Let's see...","Hell yeah !","Hummm OK..","Sure !","Let's do this !"]
+	catchPhrase.shuffle()
+	$PlayerDialog.speak(catchPhrase[0],3)
 
 func _on_PowerUpTimer_timeout():
 	nbDashPowerUp = 0

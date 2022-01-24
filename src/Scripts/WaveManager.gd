@@ -21,11 +21,13 @@ func round_to_dec(num, digit):
 func _process(delta):
 	position += Oxy - get_global_transform_with_canvas().origin - myOffset
 	
-	if currentWave >= 0:
+	if currentWave >= 0 and currentWave<5:
 		$Label.text = "Wave "+str(currentWave)+" - Next wave in "+str(round_to_dec($Timer.time_left,2))
 		if $Timer.is_stopped():
 			$Timer.start(timerTable[currentWave])
 			$PopulateTimer.start(populateDeltaT)
+	else:
+		$Label.text = ""
 
 
 func _on_Timer_timeout():
@@ -34,7 +36,8 @@ func _on_Timer_timeout():
 
 
 func _on_PopulateTimer_timeout():
-	populate()
+	if currentWave<5:
+		populate()
 
 func populate():
 	randomize()
@@ -47,7 +50,15 @@ func populate():
 			r = robot2.instance()
 		else:
 			r = robot3.instance()
-		var distance = rand_range(100,200)
+		var distance = rand_range(150,200)
 		var angle = rand_range(0,2*PI)
 		r.position = player.position + Vector2.ONE.rotated(angle)*distance
 		main.add_child(r)
+
+func populate_one():
+	var r=robot2.instance()
+	randomize()
+	var distance = rand_range(150,200)
+	var angle = rand_range(0,2*PI)
+	r.position = player.position + Vector2.ONE.rotated(angle)*distance
+	main.add_child(r)

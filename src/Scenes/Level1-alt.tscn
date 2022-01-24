@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Graphics/Tileset/CosmicLilac_Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Graphics/Sprites/MC/MC-test-all-sprites.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/Sprites/Robots/Enemy-type-1/Robot1-all-sprites.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/KillZone.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1021.5, 236 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 263, 431.75 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 235.75, 438.25 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 1019, 237 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 11.5, 49.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 40.5, 13 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 50.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10.5, 40.5 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 10, 32.5 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 40.5, 16.5 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 50, 16 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 11.5, 17.5 )
 
 [node name="Level1-alt" type="Node2D"]
 
@@ -186,3 +223,56 @@ texture = ExtResource( 3 )
 hframes = 7
 vframes = 4
 frame = 20
+
+[node name="KillZone" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 447.5, -267 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( -292, 396.25 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 1228.25, 394.75 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 450, 1065 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 336.5, 262.5 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 386.5, 223 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 584.5, 224 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 623.5, 270.5 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 336, 437.5 )
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 385.5, 453.5 )
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 584, 454 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="KillZone"]
+position = Vector2( 622.5, 421.5 )
+shape = SubResource( 12 )
+
+[connection signal="area_entered" from="KillZone" to="KillZone" method="_on_KillZone_area_entered"]

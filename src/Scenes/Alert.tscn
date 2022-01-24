@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Alert.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=6]
+size = 65
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "flash"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Alert" type="Node2D"]
+position = Vector2( -144, -96 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.351483 )
+margin_top = -8.0
+margin_right = 300.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 6 )
+text = "Alert ! Intruder detected !
+Initiate erradication !"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
+anims/flash = SubResource( 8 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

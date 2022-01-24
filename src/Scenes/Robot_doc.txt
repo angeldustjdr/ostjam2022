@@ -1,0 +1,17 @@
+LES ROBOTS CA BOUGE
+Robot1 : bouge aleatoirement case par case
+Robot2 : bouge vers le MC
+Robot3 : bouge vers le MC et tire vers le MC
+Robot4 : bouge aleatoirement case par case et tire sur le MC
+Robot5 : bouge vers le MC et tire dans les 4 directions
+Robot6 : bouge vers le MC et tire dans les 8 directions
+Robot7 : bouge vers le MC et tire en spray vers le MC (defaut : 3 balles, dispersion PI/12)
+Robot8 : bouge aleatoirement case par case et tire dans les 4 directions
+Robot9 : bouge aleatoirement case par case et tire dans les 8 directions
+Robot10 : bouge aleatoirement case par case et tire en spray vers le MC (defaut : 3 balles, dispersion PI/12)
+LES TOURELLES CA BOUGE PAS
+Tourelle1 : tire vers le MC
+Tourelle2 : tire dans les 4 directions
+Tourelle3 : tire dans les 8 directions
+Tourelle4 : tire en spray vers le MC (defaut : 3 balles, dispersion PI/12)
+

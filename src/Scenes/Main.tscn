@@ -97,8 +97,11 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="WaveManager"]
 
+[node name="PopulateTimer" type="Timer" parent="WaveManager"]
+
 [node name="Collectible_Health" parent="." instance=ExtResource( 13 )]
 position = Vector2( 104, -32 )
 
 [connection signal="body_entered" from="BeginingArea" to="BeginingArea" method="_on_BeginingArea_body_entered"]
 [connection signal="timeout" from="WaveManager/Timer" to="WaveManager" method="_on_Timer_timeout"]
+[connection signal="timeout" from="WaveManager/PopulateTimer" to="WaveManager" method="_on_PopulateTimer_timeout"]

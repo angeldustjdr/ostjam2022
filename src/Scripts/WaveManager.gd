@@ -61,4 +61,4 @@ func populate_one():
 	var distance = rand_range(150,200)
 	var angle = rand_range(0,2*PI)
 	r.position = player.position + Vector2.ONE.rotated(angle)*distance
-	main.add_child(r)
+	main.call_deferred("add_child",r)

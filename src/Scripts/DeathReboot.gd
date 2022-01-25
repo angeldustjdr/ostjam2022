@@ -27,6 +27,7 @@ func _on_RebootTimer_timeout():
 	Player.inputON = true
 	Player.get_node("Glitch").visible = false
 	Player.get_node("AnimationTree").get("parameters/playback").travel("Idle")
+	Player.get_node("PlayerHealth").updateHealthUI()
 	var Wave = Player.get_parent().get_node("WaveManager")
 	Wave.currentWave = 0
 	Wave.get_node("Timer").stop()

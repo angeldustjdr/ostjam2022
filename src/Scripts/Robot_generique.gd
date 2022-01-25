@@ -19,6 +19,9 @@ var move_type = 0
 var disp = PI/6
 var nb_spray = 1
 
+func _setDropRate(val):
+	self.droprate = val
+
 func _ready():
 	self.get_node("RobotArea").connect("area_entered", self,"_on_Pikes_area_entered")
 	self.get_node("RobotArea").connect("body_entered", self,"_on_Pikes_body_entered")

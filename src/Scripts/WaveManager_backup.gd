@@ -1,37 +1,21 @@
 extends Node2D
 
+onready var robot1 = preload("res://Scenes/Robot1.tscn")
+onready var robot2 = preload("res://Scenes/Robot2.tscn")
+onready var robot3 = preload("res://Scenes/Robot3.tscn")
 onready var main = get_parent()
 onready var player = main.get_node("Player")
 onready var fog = main.get_node("Fog").get_node("FogShader")
-
-onready var enemies = [ preload("res://Scenes/Robot1.tscn"),
-						preload("res://Scenes/Robot2.tscn"),
-						preload("res://Scenes/Robot3.tscn"),
-						preload("res://Scenes/Robot4.tscn"),
-						preload("res://Scenes/Robot5.tscn"),
-						preload("res://Scenes/Robot6.tscn"),
-						preload("res://Scenes/Robot7.tscn"),
-						preload("res://Scenes/Robot8.tscn"),
-						preload("res://Scenes/Robot9.tscn"),
-						preload("res://Scenes/Robot10.tscn"),
-						preload("res://Scenes/Tourelle1.tscn"),
-						preload("res://Scenes/Tourelle2.tscn"),
-						preload("res://Scenes/Tourelle3.tscn"),
-						preload("res://Scenes/Tourelle4.tscn")]
 
 onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
 
 var currentWave = -1
-var timerTable = [30,30,60,90,120]
-var populationDensity = [5,5,5,5,5]
+var timerTable = [10,10,10,10,10]
 var waveColor = [Vector3(1,0,0),Vector3(0,1,0),Vector3(0,0,1),Vector3(1,1,0),Vector3(0,1,1)]
-var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
-						[30,0,0,0,0,0,0,30,0,0,10,30,0,0],
-						[10,0,0,10,0,0,30,10,10,0,10,10,10,0],
-						[5,30,0,0,0,0,10,10,10,0,5,10,10,10],
-						[0,20,30,0,30,0,0,5,5,0,0,0,5,5]]
-var populateDeltaT = 5
+var populationDensity = [1,2,2,3,5]
+var populationType = [[100,0,0],[50,100,0],[20,60,100],[0,50,100],[0,0,100]]
+var populateDeltaT = 1
 
 func round_to_dec(num, digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
@@ -54,29 +38,28 @@ func _on_Timer_timeout():
 	currentWave+=1
 	$Timer.stop()
 
-
 func _on_PopulateTimer_timeout():
 	if currentWave<5:
 		populate()
 
 func populate():
 	randomize()
-	var enemyToPop = []
-	var i = 0
-	for n in populationType[currentWave]:
-		for m in range(n):
-			enemyToPop.append(enemies[i])
-		i += 1
 	for n in range(populationDensity[currentWave]):
-		enemyToPop.shuffle()
-		var r = enemyToPop[0].instance()
+		var dice = rand_range(0,100)
+		var r
+		if dice < populationType[currentWave][0]:
+			r = robot1.instance()
+		elif dice < populationType[currentWave][1]:
+			r = robot2.instance()
+		else:
+			r = robot3.instance()
 		var distance = rand_range(150,200)
 		var angle = rand_range(0,2*PI)
 		r.position = player.position + Vector2.ONE.rotated(angle)*distance
 		main.add_child(r)
 
 func populate_one():
-	var r=enemies[1].instance()
+	var r=robot2.instance()
 	randomize()
 	var distance = rand_range(150,200)
 	var angle = rand_range(0,2*PI)

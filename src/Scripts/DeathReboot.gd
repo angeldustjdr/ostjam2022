@@ -16,9 +16,13 @@ func _process(delta):
 func _on_RebootTimer_timeout():
 	$RebootTimer.stop()
 	self.visible = false
+	for n in get_tree().get_nodes_in_group("Enemy"):
+		n.health = 0
 	var Player = get_parent()
 	Player.health = 5
 	Player.position = Vector2.ZERO
 	Player.inputON = true
 	Player.get_node("Glitch").visible = false
 	Player.get_node("AnimationTree").get("parameters/playback").travel("Idle")
+	var Wave = Player.get_parent().get_node("WaveManager")
+	Wave.currentWave = 0

@@ -24,6 +24,7 @@ func _process(delta):
 	if currentWave >= 0 and currentWave<5:
 		$Label.text = "Wave "+str(currentWave)+" - Next wave in "+str(round_to_dec($Timer.time_left,2))
 		if $Timer.is_stopped():
+			if currentWave!=0 : player.get_node("PlayerDialog").speak("Another wave ?",3)
 			$Timer.start(timerTable[currentWave])
 			$PopulateTimer.start(populateDeltaT)
 	else:

@@ -1,9 +1,15 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/HealthUIManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Robot_generique.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Graphics/Sprites/Robots/Enemy-type-1/Robot1-all-sprites.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Robot1_sounds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Flash.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=19]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/whiten = false
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -113,7 +119,7 @@ start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
-[node name="Robot_generique" type="KinematicBody2D"]
+[node name="Robot_generique" type="KinematicBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
@@ -135,6 +141,7 @@ scale = Vector2( 0.40625, 1.0957 )
 polygon = PoolVector2Array( -24.6154, -17.3861, -24.6154, -2.78361, 14.7692, -2.78361, 14.7692, -17.3861 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 19 )
 texture = ExtResource( 3 )
 hframes = 7
 vframes = 4

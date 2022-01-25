@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 onready var Bullet2 = preload("res://Scenes/Bullet2.tscn")
 
-var health = 3
-var speed = 0.5
+export var health = 3
+export var speed = 0.5
 var isMoving = false
 var pixel_count = 0
 var dir = 0
@@ -54,6 +54,9 @@ func _on_Pikes_area_entered(area):
 		if "Bullet".is_subsequence_of(area.name):
 			if area._type=="Bullet":
 				health -= 1
+				$Sprite.material.set_shader_param("whiten",true)
+				yield(get_tree().create_timer(0.1),"timeout")
+				$Sprite.material.set_shader_param("whiten",false)
 				if health == 0:
 					self.get_node("Robot1_sounds")._play_song_from_name_with_playback("death")
 				else:

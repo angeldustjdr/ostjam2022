@@ -96,7 +96,6 @@ position = Vector2( -479, -349 )
 [node name="MusicManager" parent="." instance=ExtResource( 7 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-friction = 0.1
 acceleration = 0.05
 
 [node name="DeathReboot" parent="Player" instance=ExtResource( 9 )]

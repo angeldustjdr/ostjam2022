@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Collectible.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/floaty_64.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/Sprites/Items/consommables-1-all-sprites.png" type="Texture" id=3]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 2
@@ -19,11 +20,54 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 color = Color( 0.905882, 0.105882, 0.105882, 1 )
 
+[sub_resource type="Animation" id=3]
+resource_name = "Anim"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+
 [node name="Collectible_BulletSize" instance=ExtResource( 1 )]
 thisCollectibleType = "BulletSize"
 
-[node name="Particles2D" type="Particles2D" parent="." index="3"]
+[node name="Particles2D" type="Particles2D" parent="." index="2"]
 material = SubResource( 1 )
 amount = 20
 process_material = SubResource( 2 )
 texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+texture = ExtResource( 3 )
+hframes = 2
+vframes = 7
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+autoplay = "Anim"
+anims/Anim = SubResource( 3 )
+anims/RESET = SubResource( 4 )

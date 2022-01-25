@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 export var health = 5
 
-export var speed = 200
-export var friction = 0.01
-export var acceleration = 0.1
+export var speed = 150
+export var friction = 0.3
+export var acceleration = 0.7
 export var cadence = 0.2
 export var dashVelocity = 200
 

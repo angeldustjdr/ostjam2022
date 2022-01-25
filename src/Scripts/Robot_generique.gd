@@ -1,6 +1,13 @@
 extends KinematicBody2D
 
 onready var Bullet2 = preload("res://Scenes/Bullet2.tscn")
+onready var collectibles = [preload("res://Scenes/Collectible_BulletSize.tscn"),
+							preload("res://Scenes/Collectible_BulletSpeed.tscn"),
+							preload("res://Scenes/Collectible_CadenceUp.tscn"),
+							preload("res://Scenes/Collectible_DashSpeed.tscn"),
+							preload("res://Scenes/Collectible_Health.tscn"),
+							preload("res://Scenes/Collectible_MoveSpeed.tscn")]
+var droprate=30
 
 export var health = 3
 export var speed = 0.5
@@ -47,6 +54,13 @@ func _get_is_dead():
 	return self.is_dead
 
 func _death():
+	randomize()
+	var dropDice = rand_range(0,100)
+	if dropDice<droprate:
+		collectibles.shuffle()
+		var c=collectibles[0].instance()
+		c.position = self.position
+		get_parent().add_child(c)
 	self.queue_free()
 
 func _on_Pikes_area_entered(area):

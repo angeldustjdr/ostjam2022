@@ -158,7 +158,10 @@ __meta__ = {
 [node name="Collectible_Health" parent="." instance=ExtResource( 13 )]
 position = Vector2( 104, -32 )
 
-[node name="Fog" type="ColorRect" parent="."]
+[node name="Fog" type="Node2D" parent="."]
+z_index = 9
+
+[node name="FogShader" type="ColorRect" parent="Fog"]
 material = SubResource( 7 )
 margin_left = -1040.0
 margin_top = -824.0

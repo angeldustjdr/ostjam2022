@@ -5,7 +5,7 @@ onready var robot2 = preload("res://Scenes/Robot2.tscn")
 onready var robot3 = preload("res://Scenes/Robot3.tscn")
 onready var main = get_parent()
 onready var player = main.get_node("Player")
-onready var fog = main.get_node("Fog")
+onready var fog = main.get_node("Fog").get_node("FogShader")
 
 onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5

@@ -18,6 +18,8 @@ func _on_RebootTimer_timeout():
 	self.visible = false
 	for n in get_tree().get_nodes_in_group("Enemy"):
 		n.health = 0
+	for n in get_tree().get_nodes_in_group("Collectible"):
+		n.queue_free()
 	var Player = get_parent()
 	Player.health = 5
 	Player.position = Vector2.ZERO

@@ -26,3 +26,4 @@ func _on_RebootTimer_timeout():
 	Player.get_node("AnimationTree").get("parameters/playback").travel("Idle")
 	var Wave = Player.get_parent().get_node("WaveManager")
 	Wave.currentWave = 0
+	Wave.get_node("Timer").stop()

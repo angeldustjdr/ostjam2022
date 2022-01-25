@@ -5,6 +5,7 @@ onready var robot2 = preload("res://Scenes/Robot2.tscn")
 onready var robot3 = preload("res://Scenes/Robot3.tscn")
 onready var main = get_parent()
 onready var player = main.get_node("Player")
+onready var fog = main.get_node("Fog")
 
 onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
@@ -34,6 +35,11 @@ func _process(delta):
 func _on_Timer_timeout():
 	currentWave+=1
 	$Timer.stop()
+	randomize()
+	var x = rand_range(0,1)
+	var y = rand_range(0,1)
+	var z = rand_range(0,1)
+	fog.material.set_shader_param("color",Vector3(x,y,z))
 
 
 func _on_PopulateTimer_timeout():

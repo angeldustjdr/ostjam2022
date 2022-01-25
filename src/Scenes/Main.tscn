@@ -99,6 +99,7 @@ position = Vector2( -479, -349 )
 acceleration = 0.05
 
 [node name="DeathReboot" parent="Player" instance=ExtResource( 9 )]
+z_index = 10
 
 [node name="Light2D" type="Light2D" parent="Player"]
 texture = ExtResource( 4 )
@@ -139,6 +140,7 @@ position = Vector2( -1, 124 )
 shape = SubResource( 5 )
 
 [node name="WaveManager" type="Node2D" parent="."]
+z_index = 10
 script = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="WaveManager"]

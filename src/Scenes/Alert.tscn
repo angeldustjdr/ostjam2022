@@ -42,10 +42,10 @@ tracks/0/keys = {
 
 [node name="Alert" type="Node2D"]
 position = Vector2( -144, -96 )
+z_index = 10
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0.351483 )
 margin_top = -8.0
 margin_right = 300.0
 margin_bottom = 71.0

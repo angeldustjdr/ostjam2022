@@ -1,9 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/HealthUIManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Sprites/Robots/Enemy-type-2/tourelle-all-sprites.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Tourelle_generique.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Robot1_sounds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Flash.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 5 )
+shader_param/whiten = false
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -94,6 +99,7 @@ scale = Vector2( 0.40625, 1.0957 )
 polygon = PoolVector2Array( -24.6154, -17.3861, -24.6154, -2.78361, 14.7692, -2.78361, 14.7692, -17.3861 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 9 )
 texture = ExtResource( 2 )
 hframes = 6
 

@@ -7,6 +7,7 @@
 
 [node name="Tourelle2" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+health = 2
 
 [node name="AnimationTree" parent="." index="5"]
 parameters/playback = SubResource( 1 )

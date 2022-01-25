@@ -6,15 +6,20 @@
 [sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
 
-var keyboard = \"zqsd\"
+var keyboard = \"qzsd\"
 
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if Input.is_action_just_pressed(\"space_switch\"):
+		if keyboard==\"qzsd\":
+			self.keyboard = \"wasd\"
+			Global.set_keyboard(keyboard)
+			self.get_node(\"Label3\").text=\"WASD\"
+		else:
+			self.keyboard = \"qzsd\"
+			Global.set_keyboard(keyboard)
+			self.get_node(\"Label3\").text=\"QZSD\"
+	if Input.is_action_just_pressed(\"enter_begin\"):
+		get_tree().change_scene(\"res://Scenes/Main.tscn\")
 "
 
 [sub_resource type="DynamicFont" id=1]
@@ -67,7 +72,7 @@ margin_right = 264.0
 margin_bottom = 180.0
 rect_pivot_offset = Vector2( 88, 24 )
 custom_fonts/font = SubResource( 1 )
-text = "ZQSD"
+text = "QZSD"
 align = 1
 script = ExtResource( 1 )
 __meta__ = {

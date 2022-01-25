@@ -32,6 +32,9 @@ onready var inputON = false
 onready var isDashing = false
 onready var canDash = true
 
+func set_keyboard(val):
+	self.keyboard = val
+
 func get_input():
 	var input = Vector2()
 	if Input.is_action_pressed("right_"+keyboard):

@@ -108,12 +108,13 @@ func dash(dashVelocity):
 func takeDamage(n,monster_position):
 	#knockback
 	inputON = false
+	isDashing = true
 	$RecoveryTimer.start()
 	var delta_x = self.position.x - monster_position.x
 	var delta_y = self.position.y - monster_position.y
 	var norm = sqrt(delta_x*delta_x+delta_y*delta_y)
 	if (norm > 0):
-		velocity = Vector2(200*delta_x/norm,200*delta_y/norm)
+		velocity = Vector2(100*delta_x/norm,100*delta_y/norm)
 	else:
 		if (velocity.length() > 0):
 			velocity = velocity.rotated(PI) #marche pas pour des ennemis qui viennent vers toi quand t'es immobile
@@ -184,9 +185,11 @@ func _on_RecoveryTimer_timeout():
 	$RecoveryTimer.stop()
 	if health > 0 :
 		inputON=true
+		isDashing = false
 		$Glitch.visible = false
 	else : 
 		velocity = Vector2.ZERO
+		isDashing = false
 
 func _on_DashTimer_timeout():
 	isDashing = false

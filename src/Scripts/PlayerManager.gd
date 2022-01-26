@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var health = 5
 
-export var speed = 150
+export var speed = 200
 export var friction = 0.3
 export var acceleration = 0.7
 export var cadence = 0.2
@@ -11,12 +11,12 @@ export var dashVelocity = 200
 export var dashlength_PowerUp = 0.3
 var nbDashPowerUp = 0
 onready var dashTimer0 = $DashTimer.wait_time
-export var bulletSize_PowerUp = 0.2
+export var bulletSize_PowerUp = 0.4
 var nbBulletPowerUp = 0
 export var bulletSpeed_PowerUp = 50
 export var bulletSpeed0 = 150
 var nbBulletSpeedPowerUp = 0
-export var speedPowerUp = 50
+export var speedPowerUp = 75
 var nbSpeedPowerUp = 0
 export var cadencePowerUp = 0.05
 var nbCadencePowerUp = 0
@@ -27,6 +27,7 @@ onready var keyboard = get_parent().keyboard
 onready var Bullet = preload("res://Scenes/Bullet.tscn")
 onready var FadingSprite = preload("res://Scenes/FadingSprite.tscn")
 onready var particles = preload("res://Scenes/Particles2D.tscn")
+onready var shockwave = preload("res://Scenes/ShockWave.tscn")
 
 onready var inputON = false
 onready var isDashing = false
@@ -142,6 +143,11 @@ func applyCollectible(thisCollectibleType,color):
 		"CadenceUp":
 			powerUpStart(color)
 			nbCadencePowerUp +=1
+		"Grenade":
+			var s = shockwave.instance()
+			self.add_child(s)
+			for n in get_tree().get_nodes_in_group("Enemy"):
+				n.health -= 2
 
 func powerUpStart(color):
 	$PowerUpUI.visible = true

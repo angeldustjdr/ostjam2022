@@ -5,9 +5,11 @@
 
 [node name="Bullet2" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+speed = 100
 
 [node name="BulletSprite" parent="." index="0"]
 position = Vector2( 1, 0 )
+scale = Vector2( 1, 1 )
 frame = 5
 
 [node name="CollisionShape2D" parent="." index="1"]

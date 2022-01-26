@@ -21,6 +21,8 @@ func _on_RebootTimer_timeout():
 		n.health = 0
 	for n in get_tree().get_nodes_in_group("Collectible"):
 		n.queue_free()
+	for n in get_tree().get_nodes_in_group("Bullet"):
+		n.queue_free()	
 	var Player = get_parent()
 	Player.health = 5
 	Player.position = Vector2.ZERO

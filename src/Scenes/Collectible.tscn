@@ -4,6 +4,7 @@
 [ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 16.0
 
 [sub_resource type="DynamicFont" id=4]
 size = 25

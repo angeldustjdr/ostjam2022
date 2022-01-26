@@ -23,9 +23,9 @@ onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
 
 var currentWave = -1
-var timerTable = [30,30,60,90,120]
-var populationDensity = [5,5,5,5,5]
-var waveColor = [Vector3(1,0,0),Vector3(0,1,0),Vector3(0,0,1),Vector3(1,1,0),Vector3(0,1,1)]
+var timerTable = [30,40,60,60,90]
+var populationDensity = [5,5,5,4,4]
+var waveColor = [Vector3(0.4,0.8,0.9),Vector3(0.4,0.8,0.6),Vector3(0.7,0.9,0.4),Vector3(1.0,0.7,0.2),Vector3(1.0,0.2,0.2)]
 var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[30,0,0,0,0,0,0,30,0,0,10,30,0,0],
 						[10,0,0,10,0,0,30,10,10,0,10,10,10,0],
@@ -42,7 +42,8 @@ func _process(delta):
 	if currentWave >= 0 and currentWave<5:
 		$Label.text = "Wave "+str(currentWave)+" - Next wave in "+str(round_to_dec($Timer.time_left,2))
 		if $Timer.is_stopped():
-			if currentWave!=0 : player.get_node("PlayerDialog").speak("Another wave ?",3)
+			var dialogOnNextWave = ["What ?","Why ?","What have I done ?","Another wave ?","When will it end ?"]
+			player.get_node("PlayerDialog").speak(dialogOnNextWave[currentWave],3)
 			$Timer.start(timerTable[currentWave])
 			$PopulateTimer.start(populateDeltaT)
 		fog.material.set_shader_param("color",self.waveColor[self.currentWave])
@@ -82,3 +83,12 @@ func populate_one():
 	var angle = rand_range(0,2*PI)
 	r.position = player.position + Vector2.ONE.rotated(angle)*distance
 	main.call_deferred("add_child",r)
+
+func alertMessage(text,time):
+	$AlertLabel.text = text
+	$AlertLabel/AlertTimer.wait_time=time
+	$AlertLabel/AlertTimer.start()
+	
+func _on_AlertTimer_timeout():
+	$AlertLabel/AlertTimer.stop()
+	$AlertLabel.text=""

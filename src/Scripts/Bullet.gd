@@ -1,6 +1,6 @@
 extends Area2D
 
-export var speed = 150
+export var speed = 200
 var _type="Bullet"
 var direction = Vector2()
 

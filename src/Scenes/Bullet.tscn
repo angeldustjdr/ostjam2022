@@ -3,15 +3,17 @@
 [ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Sprites/IU/tir-et-vie-all-sprites.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 5.09902
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.0
+height = 6.0
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["Bullet"]]
 z_index = 10
 script = ExtResource( 1 )
 
 [node name="BulletSprite" type="Sprite" parent="."]
 position = Vector2( 0, 2.38419e-07 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 hframes = 4
 vframes = 4

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ENDING-track33.ogg-6564a6f17ca2814dea9ac5f8e2e75656.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

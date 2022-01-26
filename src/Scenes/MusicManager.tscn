@@ -1,18 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/Musics/Edited/43-loop-unfinished.ogg" type="AudioStream" id=1]
-[ext_resource path="res://Assets/Musics/Edited/31-lullaby.ogg" type="AudioStream" id=2]
-[ext_resource path="res://Assets/Musics/Edited/43-without-singing.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Musics/INTRO-ou-VAGUE-1-5-track17.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Sounds/environnement-machines-robots/computing.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Musics/VAGUE-6-track39.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scripts/MusicManager.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Musics/ENDING-track33.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Musics/VAGUE-1-5-track46.ogg" type="AudioStream" id=6]
 
 [node name="MusicManager" type="Node"]
 script = ExtResource( 4 )
 
-[node name="43-loop-unfinished" type="AudioStreamPlayer" parent="."]
+[node name="wait" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+pitch_scale = 0.9
+
+[node name="end" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="wave" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="intro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 
-[node name="43-without-singing" type="AudioStreamPlayer" parent="."]
+[node name="lastwave" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-
-[node name="31-lullaby" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )

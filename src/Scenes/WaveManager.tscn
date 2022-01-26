@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/WaveManager.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/SoundManager.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sounds/environnement-machines-robots/08-honk-only.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -77,6 +79,12 @@ anims/RESET = SubResource( 3 )
 anims/flash = SubResource( 4 )
 
 [node name="AlertTimer" type="Timer" parent="AlertLabel"]
+
+[node name="SoundManager" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="honk" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="PopulateTimer" to="." method="_on_PopulateTimer_timeout"]

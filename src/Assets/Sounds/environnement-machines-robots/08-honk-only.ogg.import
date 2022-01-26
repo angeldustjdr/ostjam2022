@@ -11,5 +11,5 @@ dest_files=[ "res://.import/08-honk-only.ogg-0665e4bc10ca3740ec48cc155d63e8e5.og
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

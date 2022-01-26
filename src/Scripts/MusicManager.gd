@@ -8,8 +8,11 @@ var _current_song_idx
 func _ready():
 	self._n_songs = self.get_child_count()
 	self._current_song_idx = 0
-	for i in self.get_children():
-		i.connect("finished", self, "_play_next")
+	#for i in self.get_children():
+	#	i.connect("finished", self, "_play_next")
+
+func _stop():
+	self.get_child(self._current_song_idx).stop()
 
 func _change_music_volume(db):
 	for i in self.get_children():

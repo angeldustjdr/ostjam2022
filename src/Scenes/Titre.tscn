@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Label.gd" type="Script" id=1]
 [ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Graphics/Sprites/IU/Q.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Graphics/Sprites/IU/S.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Graphics/Sprites/IU/D.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/MusicManager.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
@@ -15,6 +16,7 @@ script/source = "extends Node2D
 var keyboard = \"wasd\"
 func _ready():
 	Global.set_keyboard(keyboard)
+	self.get_node(\"MusicManager\")._play_song_from_name(\"intro\")
 
 func _process(delta):
 	for n in get_tree().get_nodes_in_group(\"key\"):
@@ -33,6 +35,7 @@ func _process(delta):
 			self.keyboard = \"qzsd\"
 			Global.set_keyboard(keyboard)
 	if Input.is_action_just_pressed(\"enter_begin\"):
+		self.get_node(\"MusicManager\")._stop()
 		get_tree().change_scene(\"res://Scenes/Main.tscn\")
 "
 
@@ -102,3 +105,5 @@ texture = ExtResource( 5 )
 [node name="W" type="Sprite" parent="." groups=["key"]]
 position = Vector2( 191, 171 )
 texture = ExtResource( 4 )
+
+[node name="MusicManager" parent="." instance=ExtResource( 9 )]

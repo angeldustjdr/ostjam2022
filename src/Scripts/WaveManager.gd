@@ -34,6 +34,14 @@ var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[0,20,40,0,40,0,0,5,5,0,0,0,0,0]]
 var populateDeltaT = 5
 
+var firstTimeWave0 = false
+var firstTimeWave6 = true
+
+func setFTW0(val):
+	self.firstTimeWave0 = val
+func setFTW6(val):
+	self.firstTimeWave6 = val
+	
 func round_to_dec(num, digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
 
@@ -41,6 +49,9 @@ func _process(delta):
 	position += Oxy - get_global_transform_with_canvas().origin - myOffset
 	
 	if currentWave >= 0 and currentWave<5:
+		if self.firstTimeWave0 && currentWave == 0:
+			self.get_parent().get_node("MusicManager")._play_song_from_name("wave")
+			firstTimeWave0 = false
 		$Label.text = "Wave "+str(currentWave+1)+" - Next wave in "+str(round_to_dec($Timer.time_left,2))
 		if $Timer.is_stopped():
 			var dialogOnNextWave = ["What ?","Why ?","What have I done ?","Another wave ?","When will it end ?"]
@@ -69,7 +80,11 @@ func _process(delta):
 		for i in range(15):
 			populate_DMC()
 		currentWave += 1
+		self.get_node("SoundManager")._play_song_from_name("honk")
 	elif(currentWave==7):
+		if self.firstTimeWave6:
+			self.get_parent().get_node("MusicManager")._play_song_from_name("lastwave")
+			firstTimeWave6 = false
 		if main.get_node("Dark_MC1")==null and $Timer.is_stopped():
 			alertMessage("LORE written by Jodie...",5)
 			player.get_node("PlayerDialog").speak("It's over ?",5)
@@ -80,6 +95,7 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	currentWave+=1
+	self.get_node("SoundManager")._play_song_from_name("honk")
 	$Timer.stop()
 
 

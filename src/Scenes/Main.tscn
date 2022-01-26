@@ -110,7 +110,7 @@ position = Vector2( -72, -64 )
 position = Vector2( 48, 66 )
 
 [node name="Collectible_Health" parent="." instance=ExtResource( 13 )]
-position = Vector2( 104, -32 )
+position = Vector2( 48, -80 )
 
 [node name="BeginingArea" type="Area2D" parent="."]
 script = ExtResource( 12 )

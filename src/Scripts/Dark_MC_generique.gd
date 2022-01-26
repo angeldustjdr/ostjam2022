@@ -8,10 +8,10 @@ onready var collectibles = [preload("res://Scenes/Collectible_BulletSize.tscn"),
 							preload("res://Scenes/Collectible_Health.tscn"),
 							preload("res://Scenes/Collectible_MoveSpeed.tscn"),
 							preload("res://Scenes/Collectible_Grenade.tscn")]
-var droprate=25
+var droprate=0
 
-export var health = 3
-export var speed = 0.5
+export var health = 5
+export var speed = 0.7
 var isMoving = false
 var pixel_count = 0
 var dir = 0

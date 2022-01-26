@@ -11,7 +11,7 @@ func _process(delta):
 	if (visible):
 		if(shining):
 			time += delta
-			modulate.a = 0.5+0.5*sin(3*time)
+			modulate.a = 0.5+0.5*sin(4*time)
 		else:
 			modulate.a = 1
 

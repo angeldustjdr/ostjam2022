@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Label.gd" type="Script" id=1]
 [ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Graphics/Sprites/IU/Z.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Sprites/IU/W.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/Sprites/IU/A.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Sprites/IU/Q.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/Sprites/IU/S.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Sprites/IU/D.png" type="Texture" id=8]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
@@ -11,15 +17,21 @@ func _ready():
 	Global.set_keyboard(keyboard)
 
 func _process(delta):
+	for n in get_tree().get_nodes_in_group(\"key\"):
+		n.visible = false
+	if keyboard == \"wasd\":
+		$W.visible = true
+		$A.visible = true
+	if keyboard == \"qzsd\":
+		$Q.visible = true
+		$Z.visible = true
 	if Input.is_action_just_pressed(\"space_switch\"):
 		if keyboard==\"qzsd\":
 			self.keyboard = \"wasd\"
 			Global.set_keyboard(keyboard)
-			self.get_node(\"Label3\").text=\"WASD\"
 		else:
 			self.keyboard = \"qzsd\"
 			Global.set_keyboard(keyboard)
-			self.get_node(\"Label3\").text=\"QZSD\"
 	if Input.is_action_just_pressed(\"enter_begin\"):
 		get_tree().change_scene(\"res://Scenes/Main.tscn\")
 "
@@ -54,29 +66,39 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 97.0
+margin_left = 83.0
 margin_top = 142.0
-margin_right = 287.0
+margin_right = 306.0
 margin_bottom = 160.0
 rect_pivot_offset = Vector2( 88, 24 )
 custom_fonts/font = SubResource( 1 )
-text = "Press space to switch keyboard:"
+text = "Press space to switch control scheme:"
 align = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 120.0
-margin_top = 162.0
-margin_right = 264.0
-margin_bottom = 180.0
-rect_pivot_offset = Vector2( 88, 24 )
-custom_fonts/font = SubResource( 1 )
-text = "WASD"
-align = 1
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="D" type="Sprite" parent="."]
+position = Vector2( 205, 185 )
+texture = ExtResource( 8 )
+
+[node name="S" type="Sprite" parent="."]
+position = Vector2( 191, 185 )
+texture = ExtResource( 7 )
+
+[node name="Q" type="Sprite" parent="." groups=["key"]]
+position = Vector2( 177, 185 )
+texture = ExtResource( 6 )
+
+[node name="Z" type="Sprite" parent="." groups=["key"]]
+position = Vector2( 191, 171 )
+texture = ExtResource( 3 )
+
+[node name="A" type="Sprite" parent="." groups=["key"]]
+position = Vector2( 177, 185 )
+texture = ExtResource( 5 )
+
+[node name="W" type="Sprite" parent="." groups=["key"]]
+position = Vector2( 191, 171 )
+texture = ExtResource( 4 )

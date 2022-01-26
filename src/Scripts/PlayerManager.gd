@@ -29,6 +29,7 @@ onready var FadingSprite = preload("res://Scenes/FadingSprite.tscn")
 onready var particles = preload("res://Scenes/Particles2D.tscn")
 onready var shockwave = preload("res://Scenes/ShockWave.tscn")
 onready var footstep = preload("res://Scenes/Footstep.tscn")
+onready var splatch = preload("res://Scenes/Splatch.tscn")
 
 onready var inputON = false
 onready var isDashing = false
@@ -129,6 +130,9 @@ func takeDamage(n,monster_position):
 		$AnimationTree.get("parameters/playback").travel("DEATH")
 	else:
 		self.get_node("Player_sounds")._play_song_from_name_with_playback("hurt")
+		#camerashake
+		var camera = get_parent().get_node("Camera2D")
+		camera.addShake(0.2)
 
 func applyCollectible(thisCollectibleType,color):
 	match thisCollectibleType:
@@ -155,6 +159,7 @@ func applyCollectible(thisCollectibleType,color):
 			self.add_child(s)
 			for n in get_tree().get_nodes_in_group("Enemy"):
 				n.health -= 2
+				n.get_node("HealthUI").updateHealthUI()
 
 func powerUpStart(color):
 	$PowerUpUI.visible = true
@@ -195,6 +200,9 @@ func _on_DashTimer_timeout():
 	isDashing = false
 	speed -= dashVelocity
 	$DashTimer.stop()
+	var spl = splatch.instance()
+	spl.position = self.position
+	get_parent().add_child(spl)
 
 func _on_DashRecoveryTimer_timeout():
 	canDash = true

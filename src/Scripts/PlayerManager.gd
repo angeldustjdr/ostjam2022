@@ -21,13 +21,14 @@ var nbSpeedPowerUp = 0
 export var cadencePowerUp = 0.05
 var nbCadencePowerUp = 0
 
-onready var velocity = Vector2()
+onready var velocity = Vector2.ZERO
 onready var keyboard = get_parent().keyboard
 
 onready var Bullet = preload("res://Scenes/Bullet.tscn")
 onready var FadingSprite = preload("res://Scenes/FadingSprite.tscn")
 onready var particles = preload("res://Scenes/Particles2D.tscn")
 onready var shockwave = preload("res://Scenes/ShockWave.tscn")
+onready var footstep = preload("res://Scenes/Footstep.tscn")
 
 onready var inputON = false
 onready var isDashing = false
@@ -73,6 +74,11 @@ func _physics_process(delta):
 		if direction.length() > 0:
 			velocity = lerp(velocity, direction.normalized() * mySpeed, acceleration)
 			$AnimationTree.get("parameters/playback").travel("Walk")
+			if $FootstepTimer.is_stopped():
+				var f = footstep.instance()
+				f.position = self.position + Vector2(0,7)
+				get_parent().add_child(f)
+				$FootstepTimer.start()
 		else:
 			velocity = lerp(velocity, Vector2.ZERO, friction)
 			$AnimationTree.get("parameters/playback").travel("Idle")
@@ -197,3 +203,7 @@ func _on_GhostTrail_timeout():
 		ghostTrail.PlayerSprite = $Sprite
 		ghostTrail.transform = global_transform
 		get_parent().add_child(ghostTrail)
+
+
+func _on_FootstepTimer_timeout():
+	$FootstepTimer.stop()

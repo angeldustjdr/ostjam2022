@@ -21,7 +21,7 @@ onready var enemies = [ preload("res://Scenes/Robot1.tscn"),
 onready var DarkMC = preload("res://Scenes/Dark_MC1.tscn")
 
 onready var Oxy = get_global_transform_with_canvas().origin
-onready var myOffset = OS.window_size/5.5
+onready var myOffset = OS.window_size/7
 
 var currentWave = -1
 var timerTable = [30,30,40,60,60]

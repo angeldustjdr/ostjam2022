@@ -13,7 +13,7 @@ shader_param/whiten = false
 
 [node name="Robot2" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-health = 1
+health = 2
 
 [node name="Sprite" parent="." index="3"]
 material = SubResource( 2 )

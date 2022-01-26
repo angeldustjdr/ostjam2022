@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var health = 5
 
 export var speed = 200
-export var friction = 0.3
+export var friction = 0.5
 export var acceleration = 0.7
 export var cadence = 0.2
 export var dashVelocity = 200
@@ -99,7 +99,6 @@ func _physics_process(delta):
 
 func dash(dashVelocity):
 	self.get_node("Player_sounds")._play_song_from_name_with_playback("dash")
-	inputON = false
 	isDashing = true
 	canDash = false
 	speed += dashVelocity
@@ -198,7 +197,6 @@ func _on_RecoveryTimer_timeout():
 		isDashing = false
 
 func _on_DashTimer_timeout():
-	inputON = true
 	isDashing = false
 	speed -= dashVelocity
 	$DashTimer.stop()

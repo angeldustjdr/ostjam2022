@@ -446,7 +446,7 @@ wait_time = 0.05
 autostart = true
 
 [node name="PowerUpTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
 
 [node name="PowerUpUI" type="ColorRect" parent="."]
 visible = false

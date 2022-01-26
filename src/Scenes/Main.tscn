@@ -111,6 +111,7 @@ position = Vector2( 48, 66 )
 
 [node name="Collectible_Health" parent="." instance=ExtResource( 13 )]
 position = Vector2( 48, -80 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="BeginingArea" type="Area2D" parent="."]
 script = ExtResource( 12 )

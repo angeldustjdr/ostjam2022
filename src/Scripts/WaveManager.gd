@@ -29,8 +29,8 @@ var waveColor = [Vector3(0.4,0.8,0.9),Vector3(0.4,0.8,0.6),Vector3(0.7,0.9,0.4),
 var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[30,0,0,0,0,0,0,30,0,0,10,30,0,0],
 						[10,0,0,10,0,0,30,10,10,0,10,10,10,0],
-						[5,30,0,0,0,0,10,10,10,0,5,10,10,10],
-						[0,20,30,0,30,0,0,5,5,0,0,0,5,5]]
+						[0,30,10,10,0,0,10,10,10,0,0,10,10,10],
+						[0,20,40,0,40,0,0,5,5,0,0,0,0,0]]
 var populateDeltaT = 5
 
 func round_to_dec(num, digit):
@@ -44,6 +44,8 @@ func _process(delta):
 		if $Timer.is_stopped():
 			var dialogOnNextWave = ["What ?","Why ?","What have I done ?","Another wave ?","When will it end ?"]
 			player.get_node("PlayerDialog").speak(dialogOnNextWave[currentWave],3)
+			var alertDialog = ["Send more units","Exterminate !","KILL HIM !","KILL HIM NOW !"]
+			if currentWave > 0 : alertMessage(alertDialog[currentWave-1],5)
 			$Timer.start(timerTable[currentWave])
 			$PopulateTimer.start(populateDeltaT)
 		fog.material.set_shader_param("color",self.waveColor[self.currentWave])

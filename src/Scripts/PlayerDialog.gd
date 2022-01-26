@@ -7,7 +7,7 @@ var myDialog = ""
 
 func _process(delta):
 	var keyboard = player.keyboard
-	var openingDialog = ["WTF happened ?","Why am I still alive ?","I gotta find out.","I gotta keep moving !","("+keyboard+" to move)","(Left click to shoot)","(Space to dash)"]
+	var openingDialog = ["WTF happened ?","Why am I still alive ?","I gotta find out.","I gotta keep moving !","("+keyboard+" to move)","(Left click to shoot)","(Space to dash - damages the enemy on landing)"]
 	if opening and line<openingDialog.size():
 		$Label.text = openingDialog[line]
 	elif line==openingDialog.size():

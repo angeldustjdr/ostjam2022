@@ -24,8 +24,7 @@ onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
 
 var currentWave = -1
-#var timerTable = [30,30,40,60,60]
-var timerTable = [2,2,2,2,2]
+var timerTable = [30,30,40,60,60]
 var populationDensity = [4,4,4,4,4]
 var waveColor = [Vector3(0.4,0.8,0.9),Vector3(0.4,0.8,0.6),Vector3(0.7,0.9,0.4),Vector3(1.0,0.7,0.2),Vector3(1.0,0.2,0.2)]
 var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
@@ -67,7 +66,7 @@ func _process(delta):
 	elif(currentWave==6):
 		alertMessage("NOW DIE !",5)
 		player.get_node("PlayerDialog").speak("Oh Shit",3)
-		for i in range(1):
+		for i in range(15):
 			populate_DMC()
 		currentWave += 1
 	elif(currentWave==7):

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pixabay-florickingdp1-explosion-6801.mp3-f241678a6da1d957d65191ad3c430150.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/explosions-lasers/pixabay-florickingdp1-explosion-6801.mp3"
+dest_files=[ "res://.import/pixabay-florickingdp1-explosion-6801.mp3-f241678a6da1d957d65191ad3c430150.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

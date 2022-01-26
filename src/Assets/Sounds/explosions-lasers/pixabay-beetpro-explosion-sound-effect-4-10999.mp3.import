@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pixabay-beetpro-explosion-sound-effect-4-10999.mp3-100420f16ada48090428ba259f6d28e6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/explosions-lasers/pixabay-beetpro-explosion-sound-effect-4-10999.mp3"
+dest_files=[ "res://.import/pixabay-beetpro-explosion-sound-effect-4-10999.mp3-100420f16ada48090428ba259f6d28e6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

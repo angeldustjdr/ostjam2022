@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pixabay-unknown-bad-explosion-6855.mp3-7230d39d22ceff1bc4a1ca3cd3f768d0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/explosions-lasers/pixabay-unknown-bad-explosion-6855.mp3"
+dest_files=[ "res://.import/pixabay-unknown-bad-explosion-6855.mp3-7230d39d22ceff1bc4a1ca3cd3f768d0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

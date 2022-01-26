@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/VAGUE-6-track39.ogg-7600c9728526c47f804aa4977f8d3811.oggstr"
+
+[deps]
+
+source_file="res://Assets/Musics/VAGUE-6-track39.ogg"
+dest_files=[ "res://.import/VAGUE-6-track39.ogg-7600c9728526c47f804aa4977f8d3811.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/INTRO-ou-VAGUE-1-5-track17.ogg-62b0772513757d4421fbe94aa36ed2bc.oggstr"
+
+[deps]
+
+source_file="res://Assets/Musics/INTRO-ou-VAGUE-1-5-track17.ogg"
+dest_files=[ "res://.import/INTRO-ou-VAGUE-1-5-track17.ogg-62b0772513757d4421fbe94aa36ed2bc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

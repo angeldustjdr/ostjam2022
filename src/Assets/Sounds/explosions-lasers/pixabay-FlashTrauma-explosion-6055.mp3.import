@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pixabay-FlashTrauma-explosion-6055.mp3-e24302462649e2b6676a358ce450d7e0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/explosions-lasers/pixabay-FlashTrauma-explosion-6055.mp3"
+dest_files=[ "res://.import/pixabay-FlashTrauma-explosion-6055.mp3-e24302462649e2b6676a358ce450d7e0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

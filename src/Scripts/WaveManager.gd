@@ -29,11 +29,13 @@ var timerTable = [30,30,30,40,60]
 var populationDensity = [4,4,4,4,4]
 var waveColor = [Vector3(0.4,0.8,0.9),Vector3(0.4,0.8,0.6),Vector3(0.7,0.9,0.4),Vector3(1.0,0.7,0.2),Vector3(1.0,0.2,0.2)]
 var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
-						[30,0,0,0,0,0,0,30,0,0,10,30,0,0],
-						[10,0,0,10,0,0,30,10,5,0,5,5,5,0],
-						[0,30,10,10,0,0,10,10,5,0,0,5,5,10],
-						[0,20,40,0,40,0,0,5,5,0,0,0,0,0]]
+						[10,60,10,10,0,0,0,0,0,0,5,0,0,5],
+						[10,50,20,10,0,0,0,0,0,0,0,10,0,0],
+						[10,50,25,5,0,0,10,10,0,0,0,0,10,0],
+						[10,40,30,15,15,15,0,0,5,0,0,0,0,0]]
 var populateDeltaT = 5
+var nbDMC = 7
+var DMC_remain = 0
 
 var firstTimeWave0 = false
 var firstTimeWave6 = true
@@ -79,20 +81,22 @@ func _process(delta):
 		$Label.text = "Wave ***ERROR***"
 		alertMessage("NOW DIE !",5)
 		player.get_node("PlayerDialog").speak("Oh Shit",3)
-		for i in range(7):
+		for i in range(nbDMC):
 			populate_DMC()
-		currentWave += 1
 		self.get_node("SoundManager")._play_song_from_name("honk")
 		if self.firstTimeWave6:
 			self.get_parent().get_node("MusicManager")._play_song_from_name("lastwave")
 			firstTimeWave6 = false
+		DMC_remain = nbDMC
+		currentWave += 1
 	else:
 		$Label.text = ""
 		
-	if(currentWave==7) and main.get_node_or_null("Dark_MC1")==null:
+	if(currentWave==7):
+		$Label.text = "Wave ***ERROR***"
+		if DMC_remain<=0 :
 			alertMessage("LORE written by Jodie...",5)
 			player.get_node("PlayerDialog").speak("It's over ?",5)
-			$Timer.start(5)
 
 
 func _on_Timer_timeout():

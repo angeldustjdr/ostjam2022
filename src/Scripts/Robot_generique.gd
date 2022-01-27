@@ -8,7 +8,7 @@ onready var collectibles = [preload("res://Scenes/Collectible_BulletSize.tscn"),
 							preload("res://Scenes/Collectible_Health.tscn"),
 							preload("res://Scenes/Collectible_MoveSpeed.tscn"),
 							preload("res://Scenes/Collectible_Grenade.tscn")]
-var droprate=25
+var droprate=30
 
 export var health = 3
 export var speed = 0.5
@@ -27,6 +27,8 @@ func _ready():
 	self.get_node("RobotArea").connect("area_entered", self,"_on_Pikes_area_entered")
 	self.get_node("RobotArea").connect("body_entered", self,"_on_Pikes_body_entered")
 	self.get_node("DeathTimer").connect("timeout",self,"_death")
+	randomize()
+	$DeathTimer.wait_time += rand_range(0.0,1.0)
 
 func _process(delta):
 	if health<=0 && !is_dead:

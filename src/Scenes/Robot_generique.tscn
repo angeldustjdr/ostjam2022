@@ -162,6 +162,7 @@ parameters/playback = SubResource( 17 )
 autostart = true
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="DeathTimer" type="Timer" parent="."]

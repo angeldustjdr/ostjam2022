@@ -8,7 +8,7 @@ onready var collectibles = [preload("res://Scenes/Collectible_BulletSize.tscn"),
 							preload("res://Scenes/Collectible_Health.tscn"),
 							preload("res://Scenes/Collectible_MoveSpeed.tscn"),
 							preload("res://Scenes/Collectible_Grenade.tscn")]
-var droprate=15
+var droprate=25
 
 export var health = 5
 export var speed = 0.7
@@ -67,6 +67,8 @@ func _death():
 		var c=collectibles[0].instance()
 		c.position = self.position
 		get_parent().add_child(c)
+	var waveManager = get_parent().get_node("WaveManager")
+	waveManager.DMC_remain -= 1
 	self.queue_free()
 
 func _on_Pikes_area_entered(area):

@@ -20,6 +20,9 @@ var move_type = 0
 var disp = PI/6
 var nb_spray = 1
 
+var tshoot_min=0.5
+var tshoot_max=2.0
+
 func _setDropRate(val):
 	self.droprate = val
 
@@ -28,7 +31,8 @@ func _ready():
 	self.get_node("RobotArea").connect("body_entered", self,"_on_Pikes_body_entered")
 	self.get_node("DeathTimer").connect("timeout",self,"_death")
 	randomize()
-	$DeathTimer.wait_time += rand_range(0.0,1.0)
+	#$DeathTimer.wait_time += rand_range(0.0,1.0)
+	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
 
 func _process(delta):
 	if health<=0 && !is_dead:
@@ -116,6 +120,7 @@ func _shoot():
 		b.direction = Vector2(player_position.x-self.position.x,player_position.y-self.position.y)
 		get_parent().add_child(b)
 		b.transform = self.global_transform
+	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
 		#b.rotation = self.position.angle_to_point(b.direction)
 		
 func _shoot_4():
@@ -136,6 +141,7 @@ func _shoot_4():
 				get_tree().quit()
 			get_parent().add_child(b)
 			b.transform = self.global_transform
+	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
 			
 func _shoot_8():
 	if !self.is_dead:
@@ -164,6 +170,7 @@ func _shoot_8():
 				get_tree().quit()
 			get_parent().add_child(b)
 			b.transform = self.global_transform
+	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
 
 func _shoot_spray():
 	if !self.is_dead:
@@ -183,6 +190,7 @@ func _shoot_spray():
 			b.direction = dir.rotated(-(i+1)*disp)
 			get_parent().add_child(b)
 			b.transform = self.global_transform
+	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
 
 func _dont_shoot():
 	pass

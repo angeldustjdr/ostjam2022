@@ -11,5 +11,5 @@ dest_files=[ "res://.import/pixabay-radio-illuminati-nuclear-alarm-6997.mp3-0a9b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

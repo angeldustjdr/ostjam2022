@@ -12,6 +12,6 @@ func _on_BeginingArea_body_entered(body):
 		player.get_node("PlayerDialog").speak("What now ?",3)
 		if first_time:
 			self.get_parent().get_node("MusicManager")._play_song_from_name("wave")
-			self.get_parent().get_node("WaveManager").get_node("SoundManager")._play_song_from_name("honk")
+			self.get_parent().get_node("WaveManager").get_node("SoundManager")._play_song_from_name("honk",1.2)
 			first_time = false
 		queue_free()

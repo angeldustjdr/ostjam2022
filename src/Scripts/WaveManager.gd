@@ -83,7 +83,6 @@ func _process(delta):
 		player.get_node("PlayerDialog").speak("Oh Shit",3)
 		for i in range(nbDMC):
 			populate_DMC()
-		self.get_node("SoundManager")._play_song_from_name("honk")
 		if self.firstTimeWave6:
 			self.get_parent().get_node("MusicManager")._play_song_from_name("lastwave")
 			firstTimeWave6 = false
@@ -101,7 +100,8 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	currentWave+=1
-	self.get_node("SoundManager")._play_song_from_name("honk")
+	if currentWave < 6:
+		self.get_node("SoundManager")._play_song_from_name("honk",1.2)
 	$Timer.stop()
 
 

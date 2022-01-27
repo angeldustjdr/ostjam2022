@@ -1,17 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Sounds/explosions-lasers/gun-5.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/SoundManager.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sounds/environnement-machines-robots/win-7.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sounds/hit-hurt/hitHurt-v2.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sounds/hit-hurt/lose-4.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sounds/explosions-lasers/explosion-v3.wav" type="AudioStream" id=6]
 
 [node name="Player_sounds" type="Node"]
 script = ExtResource( 2 )
 
 [node name="shoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = 5.0
+volume_db = 10.0
 pitch_scale = 0.9
 
 [node name="dash" type="AudioStreamPlayer" parent="."]
@@ -25,3 +26,7 @@ volume_db = -5.0
 [node name="death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = 5.0
+
+[node name="enddash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0

@@ -203,6 +203,7 @@ func _on_DashTimer_timeout():
 	speed -= dashVelocity
 	velocity = Vector2.ZERO
 	$DashTimer.stop()
+	$Player_sounds._play_song_from_name("enddash")
 	var spl = splatch.instance()
 	spl.position = self.position
 	get_parent().add_child(spl)

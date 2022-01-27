@@ -35,3 +35,4 @@ func _on_RebootTimer_timeout():
 	Wave.setFTW0(true)
 	Wave.setFTW6(true)
 	Wave.get_node("Timer").stop()
+	Wave.get_node("SoundManager")._play_song_from_name("honk",1.2)

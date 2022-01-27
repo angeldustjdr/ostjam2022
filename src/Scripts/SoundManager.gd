@@ -18,10 +18,10 @@ func _play_song_from_idx(idx):
 	self.get_child(idx).play()
 	self._current_song_idx = idx
 
-func _play_song_from_name(name):
+func _play_song_from_name(name,from=0.0):
 	if self.get_child(self._current_song_idx).is_playing():
 		self.get_child(self._current_song_idx).stop()
-	self.get_node(name).play()
+	self.get_node(name).play(from)
 	self._current_song_idx = self.get_node(name).get_index()
 
 func _play_song_from_name_with_playback(name):

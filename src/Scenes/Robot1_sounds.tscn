@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Sounds/hit-hurt/hitHurt-v6.wav" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Sounds/hit-hurt/lose-1.wav" type="AudioStream" id=2]
-[ext_resource path="res://Assets/Sounds/explosions-lasers/laser-7.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/explosions-lasers/laserShoot-v1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scripts/SoundManager.gd" type="Script" id=4]
 
 [node name="Robot1_sounds" type="Node2D"]

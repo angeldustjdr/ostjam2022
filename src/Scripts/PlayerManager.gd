@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var health = 5
 
-export var speed = 200
+export var speed = 175
 export var friction = 0.5
 export var acceleration = 0.7
 export var cadence = 0.2

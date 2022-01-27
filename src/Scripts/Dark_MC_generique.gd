@@ -8,7 +8,7 @@ onready var collectibles = [preload("res://Scenes/Collectible_BulletSize.tscn"),
 							preload("res://Scenes/Collectible_Health.tscn"),
 							preload("res://Scenes/Collectible_MoveSpeed.tscn"),
 							preload("res://Scenes/Collectible_Grenade.tscn")]
-var droprate=0
+var droprate=15
 
 export var health = 5
 export var speed = 0.7

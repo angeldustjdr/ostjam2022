@@ -31,7 +31,7 @@ func _on_RebootTimer_timeout():
 	Player.get_node("AnimationTree").get("parameters/playback").travel("Idle")
 	Player.get_node("PlayerHealth").updateHealthUI()
 	var Wave = Player.get_parent().get_node("WaveManager")
-	Wave.currentWave = 0
+	if Wave.currentWave >= 6 : Wave.currentWave = 6
 	Wave.setFTW0(true)
 	Wave.setFTW6(true)
 	Wave.get_node("Timer").stop()

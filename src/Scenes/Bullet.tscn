@@ -23,7 +23,7 @@ frame = 8
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]

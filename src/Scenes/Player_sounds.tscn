@@ -29,4 +29,4 @@ volume_db = 5.0
 
 [node name="enddash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -5.0
+volume_db = -15.0

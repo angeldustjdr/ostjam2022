@@ -25,7 +25,7 @@ stream = ExtResource( 4 )
 
 [node name="kaboom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -2.0
+volume_db = -7.0
 pitch_scale = 0.3
 
 [node name="collect" type="AudioStreamPlayer" parent="."]

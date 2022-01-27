@@ -160,6 +160,8 @@ func applyCollectible(thisCollectibleType,color):
 			for n in get_tree().get_nodes_in_group("Enemy"):
 				n.health -= 2
 				n.get_node("HealthUI").updateHealthUI()
+			for n in get_tree().get_nodes_in_group("Bullet2"):
+				n.queue_free()
 
 func powerUpStart(color):
 	$PowerUpUI.visible = true

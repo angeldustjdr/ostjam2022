@@ -24,14 +24,14 @@ onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
 
 var currentWave = -1
-var timerTable = [30,60,60,60,90]
+var timerTable = [30,30,30,40,60]
 #var timerTable = [1,1,1,1,1]
 var populationDensity = [4,4,4,4,4]
 var waveColor = [Vector3(0.4,0.8,0.9),Vector3(0.4,0.8,0.6),Vector3(0.7,0.9,0.4),Vector3(1.0,0.7,0.2),Vector3(1.0,0.2,0.2)]
 var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[30,0,0,0,0,0,0,30,0,0,10,30,0,0],
-						[10,0,0,10,0,0,30,10,10,0,10,10,10,0],
-						[0,30,10,10,0,0,10,10,10,0,0,10,10,10],
+						[10,0,0,10,0,0,30,10,5,0,5,5,5,0],
+						[0,30,10,10,0,0,10,10,5,0,0,5,5,10],
 						[0,20,40,0,40,0,0,5,5,0,0,0,0,0]]
 var populateDeltaT = 5
 

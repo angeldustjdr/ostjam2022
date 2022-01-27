@@ -31,21 +31,29 @@ func _on_Collectible_body_entered(body):
 	if body==player and !player.isDashing:
 		player.applyCollectible(thisCollectibleType,$Particles2D.process_material.color)
 		var c = CollectibleLabel.instance()
+		var t = 0.18
 		match thisCollectibleType:
 			"Health":
 				c.text = "Health +1"
+				SoundManager._play_song_from_name("collect",t)
 			"DashSpeed":
 				c.text = "Dash Speed UP"
+				SoundManager._play_song_from_name("collect",t)
 			"BulletSize":
 				c.text = "Bullet Size +1"
+				SoundManager._play_song_from_name("collect",t)
 			"BulletSpeed":
 				c.text = "Bullet Speed UP"
+				SoundManager._play_song_from_name("collect",t)
 			"MoveSpeed":
 				c.text = "Movement Speed UP"
+				SoundManager._play_song_from_name("collect",t)
 			"CadenceUp":
 				c.text = "Fire rate UP"
+				SoundManager._play_song_from_name("collect",t)
 			"Grenade":
 				c.text = "KABOOM"
+				SoundManager._play_song_from_name("kaboom")
 		c.get_node("AnimationPlayer").play("Fade")
 		get_parent().get_node("Player").add_child(c)
 		queue_free()

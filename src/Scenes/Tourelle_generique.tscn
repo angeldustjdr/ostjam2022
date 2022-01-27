@@ -124,3 +124,8 @@ autostart = true
 wait_time = 0.9
 
 [node name="Robot1_sounds" parent="." instance=ExtResource( 4 )]
+
+[node name="RecoveryTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="RecoveryTimer" to="." method="_on_RecoveryTimer_timeout"]

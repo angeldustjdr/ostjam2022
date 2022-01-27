@@ -7,6 +7,8 @@ export var friction = 0.5
 export var acceleration = 0.7
 export var cadence = 0.2
 export var dashVelocity = 200
+export var maxVelocity = 325
+
 
 export var dashlength_PowerUp = 0.3
 var nbDashPowerUp = 0
@@ -71,7 +73,7 @@ func _physics_process(delta):
 	# Deplacement
 	if inputON:
 		var direction = get_input()
-		var mySpeed = speed + nbSpeedPowerUp*speedPowerUp
+		var mySpeed = min(self.speed + nbSpeedPowerUp*speedPowerUp,self.maxVelocity)
 		if direction.length() > 0:
 			velocity = lerp(velocity, direction.normalized() * mySpeed, acceleration)
 			$AnimationTree.get("parameters/playback").travel("Walk")

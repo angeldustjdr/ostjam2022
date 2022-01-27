@@ -432,3 +432,8 @@ active = true
 parameters/playback = SubResource( 67 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
+
+[node name="RecoveryTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="RecoveryTimer" to="." method="_on_RecoveryTimer_timeout"]

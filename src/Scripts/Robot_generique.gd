@@ -23,6 +23,12 @@ var nb_spray = 1
 var tshoot_min=0.5
 var tshoot_max=2.0
 
+var knock_back_speed = 200
+onready var velocity = Vector2.ZERO
+export var friction = 0.1
+
+var isHit = false
+
 func _setDropRate(val):
 	self.droprate = val
 
@@ -32,7 +38,7 @@ func _ready():
 	self.get_node("DeathTimer").connect("timeout",self,"_death")
 	randomize()
 	#$DeathTimer.wait_time += rand_range(0.0,1.0)
-	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
+	$ShootTimer.wait_time = rand_range(tshoot_min,tshoot_max)
 
 func _process(delta):
 	if health<=0 && !is_dead:
@@ -43,22 +49,36 @@ func _process(delta):
 			self.get_node("DeathTimer").start()
 	elif !is_dead:
 		if self.move_type>0:
-			if self.move_type == 1:
-				if self.isMoving:
-					if(self.pixel_count < 16):
-						self._move()
-						self.pixel_count += speed
-					else:
-						self.get_node("AnimationTree").get("parameters/playback").travel("idle")
-						self.pixel_count = 0
-						self.isMoving = false
-						self.get_node("MovingTimer").start()
-			elif self.move_type ==2:
-				self.get_node("AnimationTree").get("parameters/playback").travel("walk")
-				_move_towards_player()
+			if !isHit:
+				if self.move_type == 1:
+					if self.isMoving:
+						if(self.pixel_count < 16):
+							self._move()
+							self.pixel_count += speed
+						else:
+							self.get_node("AnimationTree").get("parameters/playback").travel("idle")
+							self.pixel_count = 0
+							self.isMoving = false
+							self.get_node("MovingTimer").start()
+				elif self.move_type ==2:
+					self.get_node("AnimationTree").get("parameters/playback").travel("walk")
+					_move_towards_player()
+				else:
+					print("ERROR : error on move_type")
+					get_tree().quit()
 			else:
-				print("ERROR : error on move_type")
-				get_tree().quit()
+				velocity = lerp(velocity, Vector2.ZERO, friction)
+				move_and_slide(velocity)
+	elif is_dead:		
+		velocity = lerp(velocity, Vector2.ZERO, friction)
+		move_and_slide(velocity)
+				
+
+func _knockback(pos):
+	var delta_x = self.position.x - pos.x
+	var delta_y = self.position.y - pos.y
+	var norm = sqrt(delta_x*delta_x+delta_y*delta_y)
+	velocity = Vector2(self.knock_back_speed*delta_x/norm,self.knock_back_speed*delta_y/norm)
 
 func _get_is_dead():
 	return self.is_dead
@@ -78,6 +98,9 @@ func _on_Pikes_area_entered(area):
 		if "Bullet".is_subsequence_of(area.name):
 			if area._type=="Bullet":
 				health -= 1
+				isHit = true
+				$RecoveryTimer.start()
+				self._knockback(area.position)
 				$Sprite.material.set_shader_param("whiten",true)
 				yield(get_tree().create_timer(0.1),"timeout")
 				$Sprite.material.set_shader_param("whiten",false)
@@ -120,7 +143,7 @@ func _shoot():
 		b.direction = Vector2(player_position.x-self.position.x,player_position.y-self.position.y)
 		get_parent().add_child(b)
 		b.transform = self.global_transform
-	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
+	$ShootTimer.wait_time = rand_range(tshoot_min,tshoot_max)
 		#b.rotation = self.position.angle_to_point(b.direction)
 		
 func _shoot_4():
@@ -141,7 +164,7 @@ func _shoot_4():
 				get_tree().quit()
 			get_parent().add_child(b)
 			b.transform = self.global_transform
-	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
+	$ShootTimer.wait_time = rand_range(tshoot_min,tshoot_max)
 			
 func _shoot_8():
 	if !self.is_dead:
@@ -170,7 +193,7 @@ func _shoot_8():
 				get_tree().quit()
 			get_parent().add_child(b)
 			b.transform = self.global_transform
-	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
+	$ShootTimer.wait_time = rand_range(tshoot_min,tshoot_max)
 
 func _shoot_spray():
 	if !self.is_dead:
@@ -190,7 +213,7 @@ func _shoot_spray():
 			b.direction = dir.rotated(-(i+1)*disp)
 			get_parent().add_child(b)
 			b.transform = self.global_transform
-	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
+	$ShootTimer.wait_time = rand_range(tshoot_min,tshoot_max)
 
 func _dont_shoot():
 	pass
@@ -202,3 +225,6 @@ func _move_towards_player():
 	var norm = sqrt(delta_x*delta_x+delta_y*delta_y)
 	if (norm > 0):
 		_move_using_vector((-delta_x*self.speed)/norm,(-delta_y*self.speed)/norm)
+
+func _on_RecoveryTimer_timeout():
+	isHit = false

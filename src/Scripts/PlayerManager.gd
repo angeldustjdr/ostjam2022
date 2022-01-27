@@ -199,6 +199,7 @@ func _on_RecoveryTimer_timeout():
 func _on_DashTimer_timeout():
 	isDashing = false
 	speed -= dashVelocity
+	velocity = Vector2.ZERO
 	$DashTimer.stop()
 	var spl = splatch.instance()
 	spl.position = self.position

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Sounds/explosions-lasers/gun-5.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/SoundManager.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sounds/explosions-lasers/powerUp-v2.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/environnement-machines-robots/win-7.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sounds/hit-hurt/hitHurt-v2.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sounds/hit-hurt/lose-4.wav" type="AudioStream" id=5]
 
@@ -16,8 +16,7 @@ pitch_scale = 0.9
 
 [node name="dash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
-pitch_scale = 0.8
+volume_db = -5.0
 
 [node name="hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

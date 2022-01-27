@@ -3,6 +3,7 @@ extends Node2D
 export var keyboard = "qzsd"
 
 func _ready():
+	var titre = load("res://Scenes/Titre.tscn")
 	self.keyboard = Global.get_keyboard()
 	self.get_node("Player").set_keyboard(self.keyboard)
 	property_list_changed_notify()

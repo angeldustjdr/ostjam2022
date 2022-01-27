@@ -37,6 +37,9 @@ onready var inputON = false
 onready var isDashing = false
 onready var canDash = true
 
+func get_health():
+	return self.health
+
 func set_keyboard(val):
 	self.keyboard = val
 

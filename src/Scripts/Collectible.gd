@@ -28,7 +28,7 @@ func _process(delta):
 
 func _on_Collectible_body_entered(body):
 	var player = get_parent().get_node("Player")
-	if body==player and !player.isDashing:
+	if body==player and !player.isDashing and player.get_health() > 0:
 		player.applyCollectible(thisCollectibleType,$Particles2D.process_material.color)
 		var c = CollectibleLabel.instance()
 		var t = 0.18

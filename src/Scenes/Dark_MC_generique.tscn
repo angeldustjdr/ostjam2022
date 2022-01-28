@@ -1,11 +1,14 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scripts/HealthUIManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Dark_MC_generique.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Graphics/Sprites/Robots/Enemy-final/MC-ANTECHRIST-all-sprites.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Robot1_sounds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Flash.gdshader" type="Shader" id=5]
 
 [sub_resource type="ShaderMaterial" id=39]
+shader = ExtResource( 5 )
+shader_param/whiten = false
 
 [sub_resource type="Animation" id=40]
 resource_name = "DEATH"

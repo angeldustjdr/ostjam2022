@@ -34,7 +34,7 @@ var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[10,50,25,5,0,0,10,10,0,0,0,0,10,0],
 						[10,40,30,15,15,15,0,0,5,0,0,0,0,0]]
 var populateDeltaT = 5
-var nbDMC = 7
+var nbDMC = 10
 var DMC_remain = 0
 
 var firstTimeWave0 = false
@@ -87,15 +87,17 @@ func _process(delta):
 			self.get_parent().get_node("MusicManager")._play_song_from_name("lastwave")
 			firstTimeWave6 = false
 		DMC_remain = nbDMC
-		currentWave += 1
-	else:
-		$Label.text = ""
-		
-	if(currentWave==7):
+		currentWave += 1		
+	elif(currentWave==7):
 		$Label.text = "Wave ***ERROR***"
 		if DMC_remain<=0 :
 			alertMessage("LORE written by Jodie...",5)
 			player.get_node("PlayerDialog").speak("It's over ?",5)
+			$Timer.start(5)
+	elif(currentWave==8):
+		get_tree().change_scene("res://Scenes/Credits.tscn")
+	else:
+		$Label.text = ""
 
 
 func _on_Timer_timeout():

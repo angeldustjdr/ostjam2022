@@ -132,6 +132,7 @@ __meta__ = {
 }
 
 [node name="AppearTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="Musics" type="Node" parent="."]
 script = ExtResource( 6 )

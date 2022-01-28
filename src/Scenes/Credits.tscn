@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/cubic.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/Credits.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/credit_label.gd" type="Script" id=4]
-[ext_resource path="res://Assets/Graphics/Sprites/Ending/apocalypse-v1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Sprites/Ending/apocalypse-v5.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/MusicManager.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Musics/ENDING-track33.ogg" type="AudioStream" id=7]
 
@@ -66,14 +66,11 @@ __meta__ = {
 margin_right = 384.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 1 )
-text = "Musics
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur"
+text = "MUSICS
+Intro : Track 17 - panegoism - floppy-disk
+Wave 1-5 : Track 46 - EMK - Pump Panel Corruption
+Wave 6 : Track 39 - amphobius - Dataland
+Ending : Track33 - Ghraigue - Corruption (A forgotten druid)"
 align = 1
 valign = 1
 script = ExtResource( 4 )
@@ -85,14 +82,16 @@ __meta__ = {
 margin_right = 384.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 1 )
-text = "Sounds
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur"
+text = "SOUNDS
+Before wave 1 : \"computing\" from 8bit-SFX-Library
+Wave honk : cut of Track 08 - BackspinZX - Power Corrupts
+Menu : \"blip1\" from 8bit-SFX-Library
+Collect: \"Sci Fi positive notification\" from Mixkit
+Shoot MC : \"gun5\" from 8bit-SFX-Library
+Dash : \"win-7\" from 8bit-SFX-Library
+Death MC : \"lose-4\" from 8bit-SFX-Library
+Death robots : \"lose-1\" from 8bit-SFX-Library
+Other sounds were generated on https://sfxr.me/"
 align = 1
 valign = 1
 script = ExtResource( 4 )
@@ -104,14 +103,11 @@ __meta__ = {
 margin_right = 384.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 1 )
-text = "Other
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur
-Titre - Auteur"
+text = "OTHER
+Fog shader : from Gonkee's Shaders
+Tileset : \"Cosmic Lilac! Sci-fi Tileset\" by Petricake Games
+Menu : Original by Gerd Altmann (Pixabay), modified
+Ending : Original by brands amon (Pixabay), modified"
 align = 1
 valign = 1
 script = ExtResource( 4 )
@@ -132,7 +128,6 @@ __meta__ = {
 }
 
 [node name="AppearTimer" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="Musics" type="Node" parent="."]
 script = ExtResource( 6 )

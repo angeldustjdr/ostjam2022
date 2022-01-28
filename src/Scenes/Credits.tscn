@@ -1,0 +1,140 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/cubic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/credit_label.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Graphics/Sprites/Ending/apocalypse-v1.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/MusicManager.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Musics/ENDING-track33.ogg" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Credits" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Frame" type="Sprite" parent="."]
+position = Vector2( 192, 108 )
+texture = ExtResource( 5 )
+
+[node name="credits" type="Label" parent="."]
+margin_top = 64.0
+margin_right = 384.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 1 )
+text = "A game proposed by...
+
+Angeldustjdr - game design/programming
+Saellenee - game design/assets
+Vost - programming"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="thanksforplaying" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 3 )
+text = "Thanks for playing >3"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="credits_music" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 1 )
+text = "Musics
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="credits_sounds" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 1 )
+text = "Sounds
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="credits_other" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 1 )
+text = "Other
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur
+Titre - Auteur"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="theloop" type="Label" parent="."]
+margin_top = 40.0
+margin_right = 384.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 2 )
+text = "The Loop"
+align = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AppearTimer" type="Timer" parent="."]
+
+[node name="Musics" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="ending" type="AudioStreamPlayer" parent="Musics"]
+stream = ExtResource( 7 )

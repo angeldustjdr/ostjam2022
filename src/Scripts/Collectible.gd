@@ -20,7 +20,7 @@ func _ready():
 			"CadenceUp":
 				$Label.text = "Fire rate UP"
 			"Grenade":
-				$Label.text = "BOOM"
+				$Label.text = "Grenade"
 
 func _process(delta):
 	time += delta

@@ -1,12 +1,14 @@
 extends KinematicBody2D
 
 onready var Bullet2 = preload("res://Scenes/Bullet2.tscn")
-onready var collectibles = [preload("res://Scenes/Collectible_BulletSize.tscn"),
+onready var collectiblesPrimary = [preload("res://Scenes/Collectible_BulletSize.tscn"),
 							preload("res://Scenes/Collectible_BulletSpeed.tscn"),
 							preload("res://Scenes/Collectible_CadenceUp.tscn"),
 							preload("res://Scenes/Collectible_Health.tscn"),
 							preload("res://Scenes/Collectible_MoveSpeed.tscn"),
 							preload("res://Scenes/Collectible_Grenade.tscn")]
+var collectibleRate = [10,10,20,20,10,20]
+var collectibles = []
 var droprate=30
 
 export var health = 3
@@ -37,6 +39,9 @@ func _setDropRate(val):
 	self.droprate = val
 
 func _ready():
+	for n in range(6):
+		for i in range(collectibleRate[n]):
+			collectibles.append(collectiblesPrimary[n])
 	self.get_node("RobotArea").connect("area_entered", self,"_on_Pikes_area_entered")
 	self.get_node("RobotArea").connect("body_entered", self,"_on_Pikes_body_entered")
 	self.get_node("DeathTimer").connect("timeout",self,"_death")

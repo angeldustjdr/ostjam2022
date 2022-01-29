@@ -18,6 +18,7 @@ func _on_Bullet_area_entered(area):
 		if area._type == "Bullet2":
 			queue_free()
 
-func _on_Bullet_body_entered(body):
+func _on_ForWall_body_entered(body):
 	if "Tile".is_subsequence_of(body.name):
 		queue_free()
+

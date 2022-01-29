@@ -221,7 +221,7 @@ func _shoot_spray():
 			b.direction = dir.rotated(-(i+1)*disp)
 			get_parent().add_child(b)
 			b.transform = self.global_transform
-	$ShootTimer.wait_time += rand_range(tshoot_min,tshoot_max)
+	$ShootTimer.wait_time = rand_range(tshoot_min,tshoot_max)
 
 func _dont_shoot():
 	pass

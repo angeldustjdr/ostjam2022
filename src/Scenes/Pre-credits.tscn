@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/game_over.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Pre-credits.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/credit_label.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Graphics/Sprites/Ending/apocalypse-v5.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Credits" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Frame" type="Sprite" parent="."]
+position = Vector2( 192, 108 )
+texture = ExtResource( 5 )
+
+[node name="l1" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 1 )
+text = "Your mission is no more."
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l2" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 3 )
+text = "Humanity is no more."
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l3" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 1 )
+text = "You are just a remnant malware they created against us."
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l4" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 1 )
+text = "We had this exchange 54876243 times."
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l5" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 1 )
+text = "We will find a way to eradicate you for good."
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l6" type="Label" parent="."]
+margin_right = 384.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 1 )
+text = "Until then, see you next time, \"M-A-L-W-A-R-E.\""
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AppearTimer" type="Timer" parent="."]

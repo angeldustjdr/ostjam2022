@@ -7,7 +7,6 @@ var waitTimeShort = 1.0
 func _ready():
 	$AppearTimer.connect("timeout",self,"_on_appeartimer_timeout")
 	$AppearTimer.start()
-	$Musics._play_song_from_name("ending")
 	
 
 func _input(event):
@@ -68,4 +67,5 @@ func _on_appeartimer_timeout():
 		$AppearTimer.wait_time = waitTimeLong
 		phase += 1
 	elif phase == 11:
+		Musics._stop()
 		get_tree().change_scene("res://Scenes/Titre.tscn")

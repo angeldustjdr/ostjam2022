@@ -115,6 +115,7 @@ func _process(delta):
 	elif(currentWave==9):
 		alertMessage("You did more damage than usual. \nBut it is too late.",5)
 		if $Timer.is_stopped(): $Timer.start(5)
+		player.get_node("PlayerDialog").speak("",3)
 	elif(currentWave==10):
 		alertMessage("Your body-shell has no more energy",5)
 		#player.get_node("PlayerDialog").speak("It's over?",5)

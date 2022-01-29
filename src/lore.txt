@@ -1,0 +1,72 @@
+/!\ Pas d'espace avant les ? ou ! en anglais
+
+REMPLACER TIMER DE WAVE PAR "TIME BEFORE YOUR DEADLY WEAPON IS READY" ou truc du style
+
+LE MC "se réveille"
+PlayerDialog.gd
+"WTF happened?"
+"Why am I still alive?"
+"...I have a mission."
+"I gotta keep moving!"
+
+LE MC sort de la zone safe
+BeginingArea.gd 
+alertMessage "Alert! Corruption detected. \nInitiate elimination procedure."
+
+Vague 1-5
+var dialog0nNextWave = ["What?" "How...?" "Almost there." "Another wave?" "When will it end?" "Just a little more time"
++ Ajouter si possible à moitié du timer "Halway before I can destroy them all"
+(à modifier si c'est trop long mais on a l'idée)
+
+Vague 6
+
+// ECRAN BLANC + BRUIT D'EXPLOSION, les robots de la vague 5 disparaissent //
+alertMessage = ["He has used his deadly weapon! Destroy this android NOW!"]
+
+
+After the MC won
+// Musique triste now ? //
+MC: "I won" "They are all dead." "But I... feel weird."
+alertMessage = ["You did more damage than usual. But it is too late. This body-shell has no energy anymore"]
+MC: "My... mission..."
+// VISION DE L'IMAGE ENDING //
+alertMessage = ["Your mission is no more. Humanity is no more. You are just a remnant malware they created against us. We had this exchange 54876243 times. We will find a way to eradicate you for good. Until then, see you next time, M-A-L-W-A-R-E."] Ce qui serait marrant c'est que le numéro augmente si la personne rejoue dans la même session, mais bon c'est moi qui délire.
+MC: "My... mind... is... fading."
+----> MC dies
+// Ou Musique triste now pour les crédits ? //
+
+6 messages dispersés dans la salle:
+JUST GIVE UP ALREADY
+IT'S TOO LATE
+SURRENDER
+WE HAVE NO PURPOSE ANYMORE
+DEAD. ALL DEAD.
+LET'S END THIS
+
+catchPhrase durant les collectibles: parfaits tels quels
+
+
+CREDITS
+
+Musics
+Intro : Track 17 - panegoism - f̸͎͇͂ļ̷͆̾ơ̶͉̣p̸͈͖̀p̷͕̍͌ͅy̴̐͜͠ ̸͕̈́d̸̬͂i̶̡̇s̸̱̠͊̂k̵͉̝͐
+Wave 1-5 : Track 46 - EMK - Pump Panel Corruption
+Wave 6 : Track 39 - amphobius - Dataland
+Ending : Track33 - Ghraigue - Corruption (A forgotten druid)
+
+Sounds
+Before wave 1 : "computing" environment sound from 8bit-SFX-Library (itch)
+Wave honk : Track 08 - BackspinZX - Power Corrupts - cut and tweaked
+Menu : "blip1" UI sound from 8bit-SFX-Library (itch)
+Collect: "Sci Fi positive notification" from Mixkit
+Shoot MC : "gun5" shoot sound from 8bit-SFX-Library (itch)
+Dash : "win-7" win sound from 8bit-SFX-Library (itch)
+Death MC : "lose-4" lose sound from 8bit-SFX-Library (itch)
+Death robots : "lose-1" lose sound from 8bit-SFX-Library (itch)
+Other sounds were generated on https://sfxr.me/
+
+Images
+Tileset : "Cosmic Lilac! Sci-fi Tileset" by Petricake Games
+Menu : Original by Gerd Altmann (Pixabay), modified
+Ending : Original by brands amon (Pixabay), modified
+

@@ -8,7 +8,7 @@ onready var collectibles = [preload("res://Scenes/Collectible_BulletSize.tscn"),
 							preload("res://Scenes/Collectible_Health.tscn"),
 							preload("res://Scenes/Collectible_MoveSpeed.tscn"),
 							preload("res://Scenes/Collectible_Grenade.tscn")]
-var droprate=25
+var droprate=35
 
 export var health = 5
 export var speed = 0.7
@@ -20,8 +20,8 @@ var move_type = 2
 var disp = PI/6
 var nb_spray = 1
 
-var tshoot_min=0.5
-var tshoot_max=2.0
+var tshoot_min=1.0
+var tshoot_max=3.0
 
 var knock_back_speed = 200
 

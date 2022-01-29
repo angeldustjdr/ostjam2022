@@ -35,7 +35,7 @@ var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[10,50,25,5,0,0,10,10,0,0,0,0,10,0],
 						[10,40,30,15,15,15,0,0,5,0,0,0,0,0]]
 var populateDeltaT = [5,5,4,4,4]
-var nbDMC = 10
+var nbDMC = 7
 #var nbDMC = 1
 var DMC_remain = 0
 
@@ -99,8 +99,8 @@ func _process(delta):
 		$Label.text = "Wave ***ERROR*** - Remaining enemies : "+str(DMC_remain) 
 		currentWave += 1
 	elif(currentWave==7):
+		$Label.text = "Wave ***ERROR*** - Remaining enemies : "+str(DMC_remain) 
 		if DMC_remain<=0 :
-			$Label.text = "Wave ***ERROR*** - Remaining enemies : "+str(DMC_remain) 
 			self.get_parent().get_node("MusicManager")._stop()
 			#player.get_node("PlayerDialog").speak("It's done...",3)
 			if $Timer.is_stopped():
@@ -119,7 +119,7 @@ func _process(delta):
 		if $Timer.is_stopped(): $Timer.start(5)
 		player.get_node("PlayerDialog").speak("",3)
 	elif(currentWave==10):
-		alertMessage("Your body-shell has no more energy",5)
+		alertMessage("Your body-shell has \nno more energy",5)
 		#player.get_node("PlayerDialog").speak("It's over?",5)
 		if $Timer.is_stopped(): 
 			$Timer.start(5)

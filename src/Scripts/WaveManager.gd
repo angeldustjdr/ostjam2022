@@ -101,6 +101,8 @@ func _process(delta):
 	elif(currentWave==7):
 		if DMC_remain<=0 :
 			$Label.text = "Wave ***ERROR*** - Remaining enemies : "+str(DMC_remain) 
+			self.get_parent().get_node("MusicManager")._stop()
+			player.get_node("PlayerDialog").speak("It's done...",3)
 			if $Timer.is_stopped():
 				$Timer.start(3)
 				player.inputON = false

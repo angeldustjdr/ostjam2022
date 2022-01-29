@@ -25,8 +25,8 @@ onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
 
 var currentWave = -1
-var timerTable = [30,30,30,40,60]
-#var timerTable = [1,1,1,1,1]
+#var timerTable = [30,30,30,40,60]
+var timerTable = [1,1,1,1,1]
 var populationDensity = [4,4,4,4,4]
 var waveColor = [Vector3(0.4,0.8,0.9),Vector3(0.4,0.8,0.6),Vector3(0.7,0.9,0.4),Vector3(1.0,0.7,0.2),Vector3(1.0,0.2,0.2)]
 var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
@@ -35,8 +35,8 @@ var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[10,50,25,5,0,0,10,10,0,0,0,0,10,0],
 						[10,40,30,15,15,15,0,0,5,0,0,0,0,0]]
 var populateDeltaT = [5,5,4,4,4]
-var nbDMC = 10
-#var nbDMC = 1
+#var nbDMC = 10
+var nbDMC = 1
 var DMC_remain = 0
 
 var firstTimeWave0 = false
@@ -88,7 +88,6 @@ func _process(delta):
 			alertMessage("He has used his deadly weapon!\nDESTROY HIM NOW!",4.9)
 			$Timer.start(4.9)
 	elif(currentWave==6):
-		$Label.text = "Wave ***ERROR***"
 		#alertMessage("He has used his deadly weapon!\nDestroy him NOW!",5)
 		player.get_node("PlayerDialog").speak("Oh Shit",3)
 		for i in range(nbDMC):
@@ -97,23 +96,29 @@ func _process(delta):
 			self.get_parent().get_node("MusicManager")._play_song_from_name("lastwave")
 			firstTimeWave6 = false
 		DMC_remain = nbDMC
+		$Label.text = "Wave ***ERROR*** - Remaining enemies : "+str(DMC_remain) 
 		currentWave += 1
 	elif(currentWave==7):
-		$Label.text = "Wave ***ERROR***"
 		if DMC_remain<=0 :
+			$Label.text = "Wave ***ERROR*** - Remaining enemies : "+str(DMC_remain) 
 			if $Timer.is_stopped():
+				$Timer.start(3)
+				player.inputON = false
 				player.velocity = Vector2.ZERO
 				player.get_node("AnimationTree").get("parameters/playback").travel("Idle")
-				player.get_node("PlayerDialog").ending = true
 	elif(currentWave==8):
+		$Label.text = "Wave ***ERROR***"
+		if $Timer.is_stopped():
+			player.get_node("PlayerDialog").ending = true
+	elif(currentWave==9):
 		alertMessage("You did more damage than usual. \nBut it is too late.",5)
 		if $Timer.is_stopped(): $Timer.start(5)
-	elif(currentWave==9):
+	elif(currentWave==10):
 		alertMessage("Your body-shell has no more energy",5)
 		#player.get_node("PlayerDialog").speak("It's over?",5)
 		player.get_node("AnimationTree").get("parameters/playback").travel("DEATH")
 		if $Timer.is_stopped(): $Timer.start(5)
-	elif(currentWave==10):
+	elif(currentWave==11):
 		get_tree().change_scene("res://Scenes/Pre-credits.tscn")
 	else:
 		$Label.text = ""

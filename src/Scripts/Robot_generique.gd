@@ -7,7 +7,7 @@ onready var collectiblesPrimary = [preload("res://Scenes/Collectible_BulletSize.
 							preload("res://Scenes/Collectible_Health.tscn"),
 							preload("res://Scenes/Collectible_MoveSpeed.tscn"),
 							preload("res://Scenes/Collectible_Grenade.tscn")]
-var collectibleRate = [10,10,20,20,10,20]
+var collectibleRate = [10,10,20,20,10,10]
 var collectibles = []
 var droprate=30
 

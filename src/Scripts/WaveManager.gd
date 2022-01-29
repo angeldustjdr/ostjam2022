@@ -110,6 +110,8 @@ func _process(delta):
 				player.get_node("AnimationTree").get("parameters/playback").travel("Idle")
 	elif(currentWave==8):
 		$Label.text = "Wave ***ERROR***"
+		if !Musics.get_node("ending").is_playing():
+			Musics._play_song_from_name("ending")
 		if $Timer.is_stopped():
 			player.get_node("PlayerDialog").ending = true
 	elif(currentWave==9):

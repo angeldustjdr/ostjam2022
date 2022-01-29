@@ -1,20 +1,20 @@
 extends Node2D
 
 var phase = 1
-var waitTimeLong = 3.0
+var waitTimeLong = 5.0
 var waitTimeShort = 1.0
 
 func _ready():
 	$AppearTimer.connect("timeout",self,"_on_appeartimer_timeout")
 	$AppearTimer.wait_time = waitTimeShort
 	$AppearTimer.start()
-	Musics._play_song_from_name("ending")
-	$l4.text = "We had this exchange "+str(Global.getTimeEnd())+" times."
+	$l4.text = "We already had this exchange "+str(Global.getTimeEnd())+" times."
 
-#func _input(event):
-#	if event is InputEventKey:
-#		if event.pressed:
-#			phase = 11
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed:
+			_on_appeartimer_timeout()
+			phase += 1
 
 func _on_appeartimer_timeout():
 	if phase == 13:

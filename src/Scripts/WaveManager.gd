@@ -25,8 +25,8 @@ onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
 
 var currentWave = -1
-var timerTable = [30,30,30,40,60]
-#var timerTable = [1,1,1,1,1]
+#var timerTable = [30,30,30,40,60]
+var timerTable = [1,1,1,1,1]
 var populationDensity = [4,4,4,4,4]
 var waveColor = [Vector3(0.4,0.8,0.9),Vector3(0.4,0.8,0.6),Vector3(0.7,0.9,0.4),Vector3(1.0,0.7,0.2),Vector3(1.0,0.2,0.2)]
 var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
@@ -35,8 +35,8 @@ var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[10,50,25,5,0,0,10,10,0,0,0,0,10,0],
 						[10,40,30,15,15,15,0,0,5,0,0,0,0,0]]
 var populateDeltaT = 5
-var nbDMC = 10
-#var nbDMC = 1
+#var nbDMC = 10
+var nbDMC = 1
 var DMC_remain = 0
 
 var firstTimeWave0 = false
@@ -59,10 +59,10 @@ func _process(delta):
 		if self.firstTimeWave0 && currentWave == 0:
 			self.get_parent().get_node("MusicManager")._play_song_from_name("wave")
 			firstTimeWave0 = false
-		$Label.text = "Charging your deadly weapon - Time until ready : "+str(round_to_dec($TotalTimer.time_left,2))
+		$Label.text = "Wave #"+str(currentWave+1)+" - Your deadly weapon is fully charged in : "+str(round_to_dec($TotalTimer.time_left,2))
 		if $Timer.is_stopped():
-			var dialogOnNextWave = ["What?","How...?","Another wave?","Just a little more time...","Almost there!"]
-			player.get_node("PlayerDialog").speak(dialogOnNextWave[currentWave],3)
+			var dialogOnNextWave = ["I have to charge my weapon...","What...?","Another wave?","Just a little more time...","Almost there!"]
+			player.get_node("PlayerDialog").speak(dialogOnNextWave[currentWave],5)
 			var alertDialog = ["More units","Exterminate!","Destroy!","Why don't you die?\nYou're just an anomaly!"]
 			if currentWave > 0 : alertMessage(alertDialog[currentWave-1],5)
 			$Timer.start(timerTable[currentWave])
@@ -78,7 +78,7 @@ func _process(delta):
 				n.queue_free()
 			for n in get_tree().get_nodes_in_group("Bullet"):
 				n.queue_free()
-			player.get_node("PlayerDialog").speak("What now ?",3)
+			player.get_node("PlayerDialog").speak("TAKE THAT ! What now ?",3)
 			self.get_parent().get_node("Flash").flash()
 			yield(get_tree().create_timer(0.5), "timeout")
 			var s = shockwave.instance()
@@ -101,6 +101,7 @@ func _process(delta):
 		if DMC_remain<=0 :
 			if $Timer.is_stopped():
 				player.velocity = Vector2.ZERO
+				player.get_node("AnimationTree").get("parameters/playback").travel("Idle")
 				player.get_node("PlayerDialog").ending = true
 	elif(currentWave==8):
 		alertMessage("You did more damage than usual. \nBut it is too late.",5)

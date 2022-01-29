@@ -10,11 +10,11 @@ func _ready():
 	$AppearTimer.start()
 	$l4.text = "We already had this exchange "+str(Global.getTimeEnd())+" times."
 
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed:
-			_on_appeartimer_timeout()
-			phase += 1
+#func _input(event):
+#	if event is InputEventKey:
+#		if event.pressed:
+#			_on_appeartimer_timeout()
+#			phase += 1
 
 func _on_appeartimer_timeout():
 	if phase == 13:

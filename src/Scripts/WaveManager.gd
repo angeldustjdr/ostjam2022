@@ -35,6 +35,7 @@ var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[10,40,30,15,15,15,0,0,5,0,0,0,0,0]]
 var populateDeltaT = 5
 var nbDMC = 10
+#var nbDMC = 1
 var DMC_remain = 0
 
 var firstTimeWave0 = false
@@ -67,6 +68,7 @@ func _process(delta):
 	elif(currentWave==5):
 		$Label.text = "Wave ***ERROR***"
 		if $Timer.is_stopped():
+			self.get_parent().get_node("Flash").flash()
 			for n in get_tree().get_nodes_in_group("Enemy"):
 				n.health -= 5
 				n.get_node("HealthUI").updateHealthUI()
@@ -91,9 +93,10 @@ func _process(delta):
 	elif(currentWave==7):
 		$Label.text = "Wave ***ERROR***"
 		if DMC_remain<=0 :
-			alertMessage("You did more damage than usual.\nBut it is too late...",5)
-			player.get_node("PlayerDialog").speak("It's over?",5)
-			$Timer.start(5)
+			if $Timer.is_stopped():
+				alertMessage("You did more damage than usual.\nBut it is too late...",5)
+				player.get_node("PlayerDialog").speak("It's over?",5)
+				$Timer.start(5)
 	elif(currentWave==8):
 		get_tree().change_scene("res://Scenes/Credits.tscn")
 	else:

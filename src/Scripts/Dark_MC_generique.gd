@@ -29,6 +29,10 @@ var velocity = Vector2.ZERO
 var friction = 0.1
 
 var isHit = false
+var count = true
+
+func _setCount(val):
+	self.count = val
 
 func _setDropRate(val):
 	self.droprate = val
@@ -93,7 +97,8 @@ func _death():
 		c.position = self.position
 		get_parent().add_child(c)
 	var waveManager = get_parent().get_node("WaveManager")
-	waveManager.DMC_remain -= 1
+	if count:
+		waveManager.DMC_remain -= 1
 	self.queue_free()
 
 func _on_Pikes_area_entered(area):

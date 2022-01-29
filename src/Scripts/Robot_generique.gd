@@ -29,6 +29,11 @@ export var friction = 0.1
 
 var isHit = false
 
+var count = true
+
+func _setCount(val):
+	self.count = val
+
 func _setDropRate(val):
 	self.droprate = val
 

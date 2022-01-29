@@ -18,6 +18,7 @@ func _on_RebootTimer_timeout():
 	self.visible = false
 	for n in get_tree().get_nodes_in_group("Enemy"):
 		n._setDropRate(0.0)
+		n._setCount(false)
 		n.health = 0
 	for n in get_tree().get_nodes_in_group("Collectible"):
 		n.queue_free()

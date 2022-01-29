@@ -8,8 +8,8 @@ var first_time = true
 func _on_BeginingArea_body_entered(body):
 	if body==player:
 		wave.currentWave = 0
-		wave.alertMessage("Alert ! Intruder detected.\nInitiate elimination procedure.",5)
-		player.get_node("PlayerDialog").speak("What now ?",3)
+		wave.alertMessage("Alert! Corruption detected.\nInitiate elimination procedure.",5)
+		player.get_node("PlayerDialog").speak("What now?",3)
 		if first_time:
 			self.get_parent().get_node("MusicManager")._play_song_from_name("wave")
 			self.get_parent().get_node("WaveManager").get_node("SoundManager")._play_song_from_name("honk",1.2)

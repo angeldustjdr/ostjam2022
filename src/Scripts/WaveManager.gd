@@ -57,9 +57,9 @@ func _process(delta):
 			firstTimeWave0 = false
 		$Label.text = "Wave "+str(currentWave+1)+" - Next wave in "+str(round_to_dec($Timer.time_left,2))
 		if $Timer.is_stopped():
-			var dialogOnNextWave = ["What ?","Why ?","What have I done ?","Another wave ?","When will it end ?"]
+			var dialogOnNextWave = ["What?","How...?","Another wave?","Just a little more time...","Almost there!"]
 			player.get_node("PlayerDialog").speak(dialogOnNextWave[currentWave],3)
-			var alertDialog = ["More units","Exterminate !","Kill him !","KILL HIM NOW !"]
+			var alertDialog = ["More units","Exterminate!","Destroy him !","DESTROY HIM NOW !"]
 			if currentWave > 0 : alertMessage(alertDialog[currentWave-1],5)
 			$Timer.start(timerTable[currentWave])
 			$PopulateTimer.start(populateDeltaT)
@@ -79,7 +79,7 @@ func _process(delta):
 			$Timer.start(5)
 	elif(currentWave==6):
 		$Label.text = "Wave ***ERROR***"
-		alertMessage("NOW DIE !",5)
+		alertMessage("He has used his deadly weapon!\nDestroy him NOW!",5)
 		player.get_node("PlayerDialog").speak("Oh Shit",3)
 		for i in range(nbDMC):
 			populate_DMC()
@@ -91,8 +91,8 @@ func _process(delta):
 	elif(currentWave==7):
 		$Label.text = "Wave ***ERROR***"
 		if DMC_remain<=0 :
-			alertMessage("LORE written by Jodie...",5)
-			player.get_node("PlayerDialog").speak("It's over ?",5)
+			alertMessage("You did more damage than usual.\nBut it is too late...",5)
+			player.get_node("PlayerDialog").speak("It's over?",5)
 			$Timer.start(5)
 	elif(currentWave==8):
 		get_tree().change_scene("res://Scenes/Credits.tscn")

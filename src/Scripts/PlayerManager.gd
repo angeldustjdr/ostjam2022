@@ -177,7 +177,7 @@ func powerUpStart(color):
 	var p = particles.instance()
 	p.process_material.color = color
 	add_child(p)
-	var catchPhrase = ["Oh yeah !","This will be usefull","Why not ?","Let's see...","Hell yeah !","Hummm OK..","Sure !","Let's do this !"]
+	var catchPhrase = ["Sweet!","This will be usefull","Why not?","Let's see...","Hell yeah!","Hummm OK..","Sure!","Let's do this!"]
 	catchPhrase.shuffle()
 	$PlayerDialog.speak(catchPhrase[0],3)
 

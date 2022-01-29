@@ -22,7 +22,7 @@ func _process(delta):
 	
 	if ending:
 		player.inputON = false
-		var endingDialog = ["I won","They are all dead.","But I... feel weird."]
+		var endingDialog = ["It's done...","I won...","They are all dead.","But I... feel weird."]
 		if line<endingDialog.size():
 			$Label.text = endingDialog[line]
 		elif line==endingDialog.size():

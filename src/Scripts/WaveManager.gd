@@ -60,7 +60,7 @@ func _process(delta):
 		if $Timer.is_stopped():
 			var dialogOnNextWave = ["What?","How...?","Another wave?","Just a little more time...","Almost there!"]
 			player.get_node("PlayerDialog").speak(dialogOnNextWave[currentWave],3)
-			var alertDialog = ["More units","Exterminate!","Destroy him !","DESTROY HIM NOW !"]
+			var alertDialog = ["More units","Exterminate!","Destroy!","Why don't you die?\nYou're just an anomaly!"]
 			if currentWave > 0 : alertMessage(alertDialog[currentWave-1],5)
 			$Timer.start(timerTable[currentWave])
 			$PopulateTimer.start(populateDeltaT)
@@ -77,11 +77,11 @@ func _process(delta):
 			for n in get_tree().get_nodes_in_group("Bullet"):
 				n.queue_free()
 			player.get_node("PlayerDialog").speak("What now ?",3)
-			alertMessage("WHY WON'T YOU DIE ?\nYou are an anomaly...",5)
-			$Timer.start(5)
+			alertMessage("He has used his deadly weapon!\nDESTROY HIM NOW!",4.9)
+			$Timer.start(4.9)
 	elif(currentWave==6):
 		$Label.text = "Wave ***ERROR***"
-		alertMessage("He has used his deadly weapon!\nDestroy him NOW!",5)
+		#alertMessage("He has used his deadly weapon!\nDestroy him NOW!",5)
 		player.get_node("PlayerDialog").speak("Oh Shit",3)
 		for i in range(nbDMC):
 			populate_DMC()

@@ -118,8 +118,10 @@ func _process(delta):
 	elif(currentWave==10):
 		alertMessage("Your body-shell has no more energy",5)
 		#player.get_node("PlayerDialog").speak("It's over?",5)
-		player.get_node("AnimationTree").get("parameters/playback").travel("DEATH")
-		if $Timer.is_stopped(): $Timer.start(5)
+		if $Timer.is_stopped(): 
+			$Timer.start(5)
+			player.get_node("Player_sounds")._play_song_from_name("death")
+			player.get_node("AnimationTree").get("parameters/playback").travel("DEATH")
 	elif(currentWave==11):
 		get_tree().change_scene("res://Scenes/Pre-credits.tscn")
 	else:

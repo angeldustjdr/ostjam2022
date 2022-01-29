@@ -4,7 +4,7 @@ func _on_ButtonWASD_mouse_entered():
 	SoundManager._play_song_from_name("menu1")
 	
 func _on_ButtonQZSD_mouse_entered():
-	SoundManager._play_song_from_name("menu1")	
+	SoundManager._play_song_from_name("menu1")
 
 func _on_ButtonWASD_pressed():
 	Global.set_keyboard("wasd")

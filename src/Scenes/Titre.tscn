@@ -14,12 +14,14 @@ func _ready():
 	$MusicManager._play_song_from_name(\"intro\")
 	if Global.getRun() > 0:
 		$Label.text = \"Press Enter to start again\"
-
-func _process(delta):
-	if Input.is_action_just_pressed(\"enter_begin\"):
-		self.get_node(\"MusicManager\")._stop()
-		SoundManager._play_song_from_name(\"menu2\")
-		get_tree().change_scene(\"res://Scenes/Main.tscn\")
+		
+func _input(event):
+	if (event is InputEventKey):
+		if event.pressed:
+			self.get_node(\"MusicManager\")._stop()
+			SoundManager._play_song_from_name(\"menu2\")
+			get_tree().change_scene(\"res://Scenes/Main.tscn\")
+		
 "
 
 [sub_resource type="DynamicFont" id=1]
@@ -43,14 +45,14 @@ texture = ExtResource( 10 )
 centered = false
 
 [node name="Label" type="Label" parent="."]
-margin_top = 168.0
+margin_top = 143.0
 margin_right = 384.0
-margin_bottom = 192.0
+margin_bottom = 167.0
 rect_pivot_offset = Vector2( 88, 24 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Press Enter to start"
+text = "Press a key to start"
 align = 1
 script = ExtResource( 1 )
 __meta__ = {

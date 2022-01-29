@@ -25,8 +25,8 @@ onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
 
 var currentWave = -1
-#var timerTable = [30,30,30,40,60]
-var timerTable = [1,1,1,1,1]
+var timerTable = [30,30,30,40,60]
+#var timerTable = [1,1,1,1,1]
 var populationDensity = [4,4,4,4,4]
 var waveColor = [Vector3(0.4,0.8,0.9),Vector3(0.4,0.8,0.6),Vector3(0.7,0.9,0.4),Vector3(1.0,0.7,0.2),Vector3(1.0,0.2,0.2)]
 var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
@@ -34,9 +34,9 @@ var populationType = [	[50,0,0,0,0,0,0,0,0,0,50,0,0,0],
 						[10,50,20,10,0,0,0,0,0,0,0,10,0,0],
 						[10,50,25,5,0,0,10,10,0,0,0,0,10,0],
 						[10,40,30,15,15,15,0,0,5,0,0,0,0,0]]
-var populateDeltaT = 5
-#var nbDMC = 10
-var nbDMC = 1
+var populateDeltaT = [5,5,4,4,4]
+var nbDMC = 10
+#var nbDMC = 1
 var DMC_remain = 0
 
 var firstTimeWave0 = false
@@ -66,7 +66,7 @@ func _process(delta):
 			var alertDialog = ["More units","Exterminate!","Destroy!","Why don't you die?\nYou're just an anomaly!"]
 			if currentWave > 0 : alertMessage(alertDialog[currentWave-1],5)
 			$Timer.start(timerTable[currentWave])
-			$PopulateTimer.start(populateDeltaT)
+			$PopulateTimer.start(populateDeltaT[currentWave])
 		fog.material.set_shader_param("color",self.waveColor[self.currentWave])
 	elif(currentWave==5):
 		$Label.text = "Wave ***ERROR***"

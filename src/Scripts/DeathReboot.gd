@@ -35,5 +35,10 @@ func _on_RebootTimer_timeout():
 	if Wave.currentWave >= 6 : Wave.currentWave = 6
 	Wave.setFTW0(true)
 	Wave.setFTW6(true)
+	var totalTimer = Wave.get_node("TotalTimer").time_left
+	var timer = Wave.get_node("Timer").time_left
+	var timer_waitTime = Wave.get_node("Timer").wait_time
 	Wave.get_node("Timer").stop()
+	Wave.get_node("TotalTimer").stop()
+	Wave.get_node("TotalTimer").start(totalTimer+timer_waitTime-timer)
 	Wave.get_node("SoundManager")._play_song_from_name("honk",1.2)

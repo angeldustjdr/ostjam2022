@@ -54,10 +54,12 @@ func _process(delta):
 	position += Oxy - get_global_transform_with_canvas().origin - myOffset
 	
 	if currentWave >= 0 and currentWave<5:
+		if $TotalTimer.is_stopped():
+			$TotalTimer.start()
 		if self.firstTimeWave0 && currentWave == 0:
 			self.get_parent().get_node("MusicManager")._play_song_from_name("wave")
 			firstTimeWave0 = false
-		$Label.text = "Wave "+str(currentWave+1)+" - Next wave in "+str(round_to_dec($Timer.time_left,2))
+		$Label.text = "Charging your deadly weapon - Time until ready : "+str(round_to_dec($TotalTimer.time_left,2))
 		if $Timer.is_stopped():
 			var dialogOnNextWave = ["What?","How...?","Another wave?","Just a little more time...","Almost there!"]
 			player.get_node("PlayerDialog").speak(dialogOnNextWave[currentWave],3)
@@ -98,6 +100,7 @@ func _process(delta):
 		$Label.text = "Wave ***ERROR***"
 		if DMC_remain<=0 :
 			if $Timer.is_stopped():
+				player.velocity = Vector2.ZERO
 				player.get_node("PlayerDialog").ending = true
 	elif(currentWave==8):
 		alertMessage("You did more damage than usual. \nBut it is too late.",5)

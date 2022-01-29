@@ -7,6 +7,7 @@
 [ext_resource path="res://Scripts/Flash.gdshader" type="Shader" id=5]
 
 [sub_resource type="ShaderMaterial" id=39]
+resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/whiten = false
 

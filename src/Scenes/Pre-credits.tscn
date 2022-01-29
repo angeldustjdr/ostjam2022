@@ -64,7 +64,6 @@ __meta__ = {
 margin_right = 384.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 1 )
-text = "We had this exchange 54876243 times."
 align = 1
 valign = 1
 script = ExtResource( 4 )

@@ -107,7 +107,7 @@ func _process(delta):
 		player.get_node("PlayerDialog").speak("It's over?",5)
 		if $Timer.is_stopped(): $Timer.start(5)
 	elif(currentWave==10):
-		get_tree().change_scene("res://Scenes/Credits.tscn")
+		get_tree().change_scene("res://Scenes/Pre-credits.tscn")
 	else:
 		$Label.text = ""
 

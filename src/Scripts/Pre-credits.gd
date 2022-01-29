@@ -9,7 +9,7 @@ func _ready():
 	$AppearTimer.wait_time = waitTimeShort
 	$AppearTimer.start()
 	Musics._play_song_from_name("ending")
-	
+	$l4.text = "We had this exchange "+str(Global.getTimeEnd())+" times."
 
 #func _input(event):
 #	if event is InputEventKey:

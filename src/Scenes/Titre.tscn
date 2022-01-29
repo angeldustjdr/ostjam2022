@@ -20,6 +20,8 @@ func _ready():
 	Global.set_keyboard(keyboard)
 	$MusicManager._change_music_volume(-5.0)
 	$MusicManager._play_song_from_name(\"intro\")
+	if Global.getRun() > 0:
+		$Label.text = \"Press Enter to start again\"
 
 func _process(delta):
 	for n in get_tree().get_nodes_in_group(\"key\"):
@@ -66,10 +68,9 @@ texture = ExtResource( 10 )
 centered = false
 
 [node name="Label" type="Label" parent="."]
-margin_left = 128.0
-margin_top = 128.0
-margin_right = 256.0
-margin_bottom = 152.0
+margin_top = 168.0
+margin_right = 384.0
+margin_bottom = 192.0
 rect_pivot_offset = Vector2( 88, 24 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -82,10 +83,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 83.0
-margin_top = 162.0
-margin_right = 306.0
-margin_bottom = 180.0
+margin_top = 104.0
+margin_right = 384.0
+margin_bottom = 128.0
 rect_pivot_offset = Vector2( 88, 24 )
 custom_fonts/font = SubResource( 1 )
 text = "Press space to switch control scheme:"
@@ -109,27 +109,27 @@ __meta__ = {
 }
 
 [node name="D" type="Sprite" parent="."]
-position = Vector2( 203.5, 200.5 )
+position = Vector2( 205.5, 147.5 )
 texture = ExtResource( 8 )
 
 [node name="S" type="Sprite" parent="."]
-position = Vector2( 189.5, 200.5 )
+position = Vector2( 191.5, 147.5 )
 texture = ExtResource( 7 )
 
 [node name="Q" type="Sprite" parent="." groups=["key"]]
-position = Vector2( 175.5, 200.5 )
+position = Vector2( 177.5, 147.5 )
 texture = ExtResource( 6 )
 
 [node name="Z" type="Sprite" parent="." groups=["key"]]
-position = Vector2( 189.5, 186.5 )
+position = Vector2( 191.5, 133.5 )
 texture = ExtResource( 3 )
 
 [node name="A" type="Sprite" parent="." groups=["key"]]
-position = Vector2( 175.5, 200.5 )
+position = Vector2( 177.5, 147.5 )
 texture = ExtResource( 5 )
 
 [node name="W" type="Sprite" parent="." groups=["key"]]
-position = Vector2( 189.5, 186.5 )
+position = Vector2( 191.5, 133.5 )
 texture = ExtResource( 4 )
 
 [node name="MusicManager" parent="." instance=ExtResource( 9 )]

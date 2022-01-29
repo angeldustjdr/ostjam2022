@@ -68,4 +68,5 @@ func _on_appeartimer_timeout():
 		phase += 1
 	elif phase == 11:
 		Musics._stop()
+		Global.incrRun()
 		get_tree().change_scene("res://Scenes/Titre.tscn")

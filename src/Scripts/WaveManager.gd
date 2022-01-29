@@ -19,6 +19,7 @@ onready var enemies = [ preload("res://Scenes/Robot1.tscn"),
 						preload("res://Scenes/Tourelle3.tscn"),
 						preload("res://Scenes/Tourelle4.tscn")]
 onready var DarkMC = preload("res://Scenes/Dark_MC1.tscn")
+onready var shockwave = preload("res://Scenes/ShockWave.tscn")
 
 onready var Oxy = get_global_transform_with_canvas().origin
 onready var myOffset = OS.window_size/5.5
@@ -68,7 +69,6 @@ func _process(delta):
 	elif(currentWave==5):
 		$Label.text = "Wave ***ERROR***"
 		if $Timer.is_stopped():
-			self.get_parent().get_node("Flash").flash()
 			for n in get_tree().get_nodes_in_group("Enemy"):
 				n.health -= 5
 				n.get_node("HealthUI").updateHealthUI()
@@ -77,6 +77,10 @@ func _process(delta):
 			for n in get_tree().get_nodes_in_group("Bullet"):
 				n.queue_free()
 			player.get_node("PlayerDialog").speak("What now ?",3)
+			self.get_parent().get_node("Flash").flash()
+			yield(get_tree().create_timer(0.5), "timeout")
+			var s = shockwave.instance()
+			self.add_child(s)
 			alertMessage("He has used his deadly weapon!\nDESTROY HIM NOW!",4.9)
 			$Timer.start(4.9)
 	elif(currentWave==6):
@@ -89,15 +93,20 @@ func _process(delta):
 			self.get_parent().get_node("MusicManager")._play_song_from_name("lastwave")
 			firstTimeWave6 = false
 		DMC_remain = nbDMC
-		currentWave += 1		
+		currentWave += 1
 	elif(currentWave==7):
 		$Label.text = "Wave ***ERROR***"
 		if DMC_remain<=0 :
 			if $Timer.is_stopped():
-				alertMessage("You did more damage than usual.\nBut it is too late...",5)
-				player.get_node("PlayerDialog").speak("It's over?",5)
-				$Timer.start(5)
+				player.get_node("PlayerDialog").ending = true
 	elif(currentWave==8):
+		alertMessage("You did more damage than usual. \nBut it is too late.",5)
+		if $Timer.is_stopped(): $Timer.start(5)
+	elif(currentWave==9):
+		alertMessage("Your body-shell has no more energy",5)
+		player.get_node("PlayerDialog").speak("It's over?",5)
+		if $Timer.is_stopped(): $Timer.start(5)
+	elif(currentWave==10):
 		get_tree().change_scene("res://Scenes/Credits.tscn")
 	else:
 		$Label.text = ""

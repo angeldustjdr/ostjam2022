@@ -4,7 +4,6 @@ onready var Bullet2 = preload("res://Scenes/Bullet2.tscn")
 onready var collectibles = [preload("res://Scenes/Collectible_BulletSize.tscn"),
 							preload("res://Scenes/Collectible_BulletSpeed.tscn"),
 							preload("res://Scenes/Collectible_CadenceUp.tscn"),
-							preload("res://Scenes/Collectible_DashSpeed.tscn"),
 							preload("res://Scenes/Collectible_Health.tscn"),
 							preload("res://Scenes/Collectible_MoveSpeed.tscn"),
 							preload("res://Scenes/Collectible_Grenade.tscn")]

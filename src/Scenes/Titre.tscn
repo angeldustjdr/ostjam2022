@@ -10,17 +10,16 @@
 script/source = "extends Node2D
 
 func _ready():
-	$MusicManager._change_music_volume(-5.0)
-	$MusicManager._play_song_from_name(\"intro\")
+	Musics._change_music_volume(-5.0)
+	Musics._play_song_from_name(\"intro\")
 	if Global.getRun() > 0:
 		$Label.text = \"Press Enter to start again\"
 		
 func _input(event):
 	if (event is InputEventKey):
 		if event.pressed:
-			self.get_node(\"MusicManager\")._stop()
 			SoundManager._play_song_from_name(\"menu2\")
-			get_tree().change_scene(\"res://Scenes/Main.tscn\")
+			get_tree().change_scene(\"res://Scenes/Pre-titre.tscn\")
 		
 "
 
